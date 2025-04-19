@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Triangular Arbitrage Scanner (BNB/USDT)</title>
+  <style>
+    body {
+      background-color: #0d1117; /* GitHub dark background */
+      color: #c9d1d9; /* GitHub dark text */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      color: #58a6ff; /* GitHub dark blue */
+      font-size: 1.8em; /* Slightly smaller */
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #161b22; /* GitHub dark table bg */
+      border-radius: 8px;
+      overflow: hidden; /* Ensures border-radius clips content */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    th, td {
+      padding: 10px 12px; /* Slightly less padding */
+      border-bottom: 1px solid #30363d; /* GitHub dark border */
+      text-align: center; /* Center align all content */
+      font-size: 0.9em; /* Slightly smaller font */
+    }
+    th {
+      background-color: #21262d; /* GitHub dark table header bg */
+      color: #8b949e; /* GitHub dark subtle text */
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    tr:last-child td {
+      border-bottom: none; /* Remove border from last row */
+    }
+    tr:hover {
+      background-color: #1c2128; /* Slightly lighter hover */
+    }
+    .profit {
+      color: #3fb950; /* GitHub dark green */
+      font-weight: bold;
+    }
+    .loss {
+      color: #f85149; /* GitHub dark red */
+    }
+    .error-value { /* Style for potentially erroneous values */
+        color: orange;
+        font-weight: bold;
+    }
+    .controls {
+      background-color: #161b22;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      align-items: center; /* Vertically align items */
+      gap: 15px; /* Spacing between control elements */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    label {
+      display: inline-flex; /* Use flex for alignment within label */
+      align-items: center;
+      margin: 0; /* Remove default margins */
+      cursor: pointer; /* Make label clickable for checkbox */
+    }
+    input[type="number"] {
+      padding: 6px 10px;
+      border-radius: 5px;
+      border: 1px solid #30363d;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      width: 80px; /* Fixed width for number inputs */
+      margin-left: 5px; /* Space after label text */
+    }
+     input[type="checkbox"] {
+        margin-right: 5px; /* Space between checkbox and text */
+        accent-color: #58a6ff; /* Style checkbox color */
+     }
+    button {
+      padding: 7px 15px;
+      background-color: #238636; /* GitHub dark green button */
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #2ea043; /* Lighter green on hover */
+    }
+    tr.highlight {
+      /* Use a less intrusive highlight, maybe border or subtle bg */
+      background-color: rgba(94, 134, 255, 0.15); /* Subtle blue highlight */
+      border-left: 3px solid #58a6ff;
+    }
+    tr.highlight td {
+        font-weight: bold; /* Make highlighted row text bold */
+    }
+
+    /* Style specific columns */
+    td:nth-child(1), /* Step 1 */
+    td:nth-child(2), /* Step 2 */
+    td:nth-child(3) { /* Step 3 */
+      font-family: 'Courier New', Courier, monospace; /* Monospace for steps */
+      font-size: 0.85em;
+      white-space: nowrap; /* Prevent wrapping */
+    }
+    td:nth-child(5), /* Trade Amount */
+    td:nth-child(6), /* Profit */
+    td:nth-child(7) { /* Profit % */
+      font-weight: 500;
+    }
+
+    .loading-message {
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+        color: #8b949e;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      .controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      th, td {
+        font-size: 0.85em;
+        padding: 8px 10px;
+      }
+      td:nth-child(1), td:nth-child(2), td:nth-child(3) {
+        white-space: normal; /* Allow wrapping on small screens */
+         word-break: break-all; /* Help break long pair names */
+      }
+       button { padding: 8px 16px; } /* Slightly bigger buttons */
+       input[type="number"] { width: 70px; }
+    }
+     @media (max-width: 480px) {
+        body { padding: 10px; }
+        h1 { font-size: 1.3em; }
+         th, td { font-size: 0.8em; padding: 6px 8px; }
+         button { padding: 6px 12px; }
+         input[type="number"] { width: 60px; padding: 5px 8px;}
+         .controls { padding: 10px; gap: 10px; }
+         td:nth-child(1), td:nth-child(2), td:nth-child(3) {
+             font-size: 0.75em; /* Even smaller for steps */
+         }
+    }
+  </style>
+</head>
+<body>
+  <h1>Triangular Arbitrage Scanner (BNB/USDT Base)</h1>
+
+  <div class="controls">
+    <div>
+      <label for="refreshRate">Refresh (sec):</label>
+      <input type="number" id="refreshRate" value="5" min="2" max="60" />
+      <button onclick="applySettings()">Apply</button>
+    </div>
+    <div>
+      <label for="tradeAmount">Trade Amount:</label>
+      <input type="number" id="tradeAmount" value="10" min="0.01" step="0.01" />
+    </div>
+    <div>
+      <label for="filterProfitable">
+        <input type="checkbox" id="filterProfitable" checked onchange="fetchAndDisplayData()" /> Show only profitable
+      </label>
+    </div>
+     <div>
+      <label for="minProfitPercent">Min Profit (%):</label>
+      <input type="number" id="minProfitPercent" value="0.05" min="0" step="0.01" />
+    </div>
+     <div>
+      <label for="maxProfitPercent">Max Profit (%):</label>
+      <input type="number" id="maxProfitPercent" value="50" min="0.1" step="0.1" title="Filter out unrealistic profits (potential errors)" />
+    </div>
+  </div>
+
+  <table id="arbTable">
+    <thead>
+      <tr>
+        <th>Step 1</th>
+        <th>Step 2</th>
+        <th>Step 3</th>
+        <th>Base Coin</th>
+        <th>Start Amt</th>
+        <th>Profit</th>
+        <th>Profit (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="7" class="loading-message">Loading data...</td></tr>
+      <!-- Rows injected by JS -->
+    </tbody>
+  </table>
+
+  <script>
+    let autoRefreshInterval;
+    let currentRefreshRate = 5; // Default refresh rate
+    const API_URL = "https://api.binance.com/api/v3/ticker/bookTicker"; // Use bookTicker for bid/ask
+    const EXTREME_PROFIT_THRESHOLD = 1000; // Log % above this as potential anomalies
+
+    function applySettings() {
+      const newRefreshRate = parseInt(document.getElementById("refreshRate").value) || 5;
+      if (newRefreshRate < 2) {
+         alert("Refresh rate must be at least 2 seconds.");
+         document.getElementById("refreshRate").value = currentRefreshRate;
+         return;
+      }
+      currentRefreshRate = newRefreshRate;
+      startAutoRefresh();
+    }
+
+    function startAutoRefresh() {
+      clearInterval(autoRefreshInterval);
+      const interval = currentRefreshRate * 1000;
+      fetchAndDisplayData();
+      autoRefreshInterval = setInterval(fetchAndDisplayData, interval);
+       console.log(`Auto-refresh started with interval: ${currentRefreshRate} seconds`);
+    }
+
+    async function fetchAndDisplayData() {
+      const tbody = document.querySelector("#arbTable tbody");
+      const tradeAmount = parseFloat(document.getElementById("tradeAmount").value) || 10;
+      const filterProfitable = document.getElementById("filterProfitable").checked;
+      const minProfitPercent = parseFloat(document.getElementById("minProfitPercent").value) || 0;
+      const maxProfitPercent = parseFloat(document.getElementById("maxProfitPercent").value) || 50; // Default max realistic profit %
+
+      tbody.innerHTML = '<tr><td colspan="7" class="loading-message">Fetching latest prices...</td></tr>';
+
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const tickers = await response.json();
+
+        // --- **Improved Ticker Validation** ---
+        const tickerMap = tickers.reduce((map, ticker) => {
+            const bidPrice = parseFloat(ticker.bidPrice);
+            const askPrice = parseFloat(ticker.askPrice);
+            // Ensure prices are valid, positive, finite numbers
+            if (ticker.symbol &&
+                Number.isFinite(bidPrice) && bidPrice > 0 &&
+                Number.isFinite(askPrice) && askPrice > 0)
+            {
+                 map[ticker.symbol] = { bidPrice, askPrice };
+            } else if (ticker.symbol) {
+                 // console.warn(`Ignoring invalid ticker data for ${ticker.symbol}:`, ticker);
+            }
+            return map;
+        }, {});
+        // --- End Improved Ticker Validation ---
+
+        // --- Find Arbitrage Opportunities ---
+        const allBases = ["BNB", "USDT"];
+        let allOps = [];
+
+        for (const baseCoin of allBases) {
+          const ops = findTriangularArbitrage(tickerMap, baseCoin, tradeAmount);
+          ops.forEach(op => op.base = baseCoin);
+          allOps.push(...ops);
+        }
+
+        // --- Filter and Sort ---
+        const filteredOps = allOps.filter(op => {
+            const profitPercent = op.profitPercent;
+            const meetsMinProfit = profitPercent >= minProfitPercent;
+            const belowMaxProfit = profitPercent <= maxProfitPercent; // Check against max threshold
+            const isProfitable = op.profit > 0;
+
+            // Apply filter:
+            // - Must be below max profit threshold (filters errors)
+            // - If "filterProfitable" checked: Must be profitable AND meet min profit threshold.
+            // - If "filterProfitable" not checked: Must meet min profit threshold (can be loss if min=0).
+            return belowMaxProfit && (filterProfitable ? (isProfitable && meetsMinProfit) : meetsMinProfit);
+        });
+
+        const sortedOps = filteredOps.sort((a, b) => b.profitPercent - a.profitPercent); // Sort by percentage
+
+        // --- Display Data ---
+        tbody.innerHTML = "";
+
+        if (sortedOps.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" class="loading-message">No arbitrage opportunities found matching criteria.</td></tr>';
+            return;
+        }
+
+        sortedOps.forEach((op, idx) => {
+          const row = document.createElement("tr");
+          // Highlight top valid opportunity
+          if (idx === 0 && op.profit > 0 && op.profitPercent >= minProfitPercent) {
+             row.classList.add("highlight");
+          }
+
+          row.appendChild(document.createElement("td")).textContent = op.steps[0];
+          row.appendChild(document.createElement("td")).textContent = op.steps[1];
+          row.appendChild(document.createElement("td")).textContent = op.steps[2];
+          row.appendChild(document.createElement("td")).textContent = op.base;
+
+          const amountTd = row.appendChild(document.createElement("td"));
+          amountTd.textContent = `${op.amount.toFixed(op.amount < 1 ? 4 : 2)} ${op.base}`;
+
+          const profitTd = row.appendChild(document.createElement("td"));
+          profitTd.textContent = `${op.profit.toFixed(op.profit < 1 && op.profit > -1 ? 6 : 4)} ${op.base}`;
+          profitTd.className = op.profit >= 0 ? "profit" : "loss";
+          // Add warning style if profit seems abnormally high (even if within user max %)
+          if (op.profitPercent > EXTREME_PROFIT_THRESHOLD / 5) { // Add subtle hint for high values
+              profitTd.classList.add('error-value');
+          }
+
+
+          const profitPercentTd = row.appendChild(document.createElement("td"));
+          profitPercentTd.textContent = `${op.profitPercent.toFixed(4)}%`;
+          profitPercentTd.className = op.profit >= 0 ? "profit" : "loss";
+           // Add warning style if profit % seems abnormally high
+          if (op.profitPercent > EXTREME_PROFIT_THRESHOLD / 5) {
+              profitPercentTd.classList.add('error-value');
+          }
+
+
+          tbody.appendChild(row);
+        });
+
+      } catch (err) {
+        console.error("Error fetching or processing data:", err);
+        tbody.innerHTML = `<tr><td colspan="7" class="loading-message" style="color: #f85149;">Error loading data: ${err.message}. Retrying in ${currentRefreshRate}s...</td></tr>`;
+      }
+    }
+
+    // ==================================================================
+    // findTriangularArbitrage Function with Logging & Checks
+    // ==================================================================
+    function findTriangularArbitrage(tickerMap, baseCoin, startAmount) {
+      const opportunities = [];
+      const symbols = Object.keys(tickerMap);
+
+      // --- Helper for logging anomalies ---
+      function logAnomaly(details) {
+          console.warn('Potential Calculation Anomaly:', details);
+      }
+      // ---
+
+      for (const pair1 of symbols) {
+        let coinA, trade1Rate;
+
+        if (pair1.endsWith(baseCoin)) {
+          const potentialCoinA = pair1.substring(0, pair1.length - baseCoin.length);
+           if (!potentialCoinA || potentialCoinA === baseCoin) continue;
+           trade1Rate = tickerMap[pair1]?.askPrice; // BaseCoin per CoinA
+           if (!trade1Rate) continue; // Already validated > 0 and finite in map creation
+           coinA = potentialCoinA;
+        } else {
+            continue;
+        }
+
+        const amountCoinA = startAmount / trade1Rate;
+        if (!Number.isFinite(amountCoinA) || amountCoinA <= 0) {
+            // logAnomaly({ step: 1, pair1, startAmount, trade1Rate, amountCoinA });
+            continue; // Skip if calculation failed
+        }
+
+        for (const pair2 of symbols) {
+            let coinB, step2PairUsed = pair2, step2PriceUsedForDesc, step2CalcRate, step2IsBuy, amountCoinB;
+
+            if (pair2.endsWith(coinA)) { // Case 2.1: Buy CoinB w/ CoinA (Pair: CoinB/CoinA)
+                const potentialCoinB = pair2.substring(0, pair2.length - coinA.length);
+                 if (!potentialCoinB || potentialCoinB === baseCoin || potentialCoinB === coinA) continue;
+                const askPrice2 = tickerMap[pair2]?.askPrice; // CoinA per CoinB
+                if (!askPrice2) continue;
+                amountCoinB = amountCoinA / askPrice2;
+                coinB = potentialCoinB; step2PriceUsedForDesc = askPrice2; step2CalcRate = 1 / askPrice2; step2IsBuy = true;
+            }
+            else if (pair2.startsWith(coinA)) { // Case 2.2: Sell CoinA for CoinB (Pair: CoinA/CoinB)
+                const potentialCoinB = pair2.substring(coinA.length);
+                 if (!potentialCoinB || potentialCoinB === baseCoin || potentialCoinB === coinA) continue;
+                const bidPrice2 = tickerMap[pair2]?.bidPrice; // CoinB per CoinA
+                if (!bidPrice2) continue;
+                amountCoinB = amountCoinA * bidPrice2;
+                coinB = potentialCoinB; step2PriceUsedForDesc = bidPrice2; step2CalcRate = bidPrice2; step2IsBuy = false;
+            } else {
+                continue;
+            }
+
+            if (!coinB || !Number.isFinite(amountCoinB) || amountCoinB <= 0) {
+                 // logAnomaly({ step: 2, pair1, pair2, amountCoinA, step2IsBuy, price: step2PriceUsedForDesc, amountCoinB });
+                 continue; // Skip if calculation failed
+            }
+
+            // Find the third leg (CoinB -> BaseCoin)
+             let pair3, step3PairUsed, step3PriceUsedForDesc, step3CalcRate, step3IsSell = false, finalAmount;
+
+            // Case 3.1: Sell CoinB for Base (Pair: CoinB/Base)
+            const pair3_Case1 = coinB + baseCoin;
+            if (tickerMap[pair3_Case1]) {
+                const bidPrice3 = tickerMap[pair3_Case1]?.bidPrice; // BaseCoin per CoinB
+                if (bidPrice3) {
+                     finalAmount = amountCoinB * bidPrice3;
+                     pair3 = pair3_Case1; step3PairUsed = pair3; step3PriceUsedForDesc = bidPrice3; step3CalcRate = bidPrice3; step3IsSell = true;
+                }
+            }
+
+            // Case 3.2: Buy Base w/ CoinB (Pair: Base/CoinB) - Only if 3.1 failed or resulted invalid
+             const pair3_Case2 = baseCoin + coinB;
+             if (!step3IsSell && tickerMap[pair3_Case2]) {
+                 const askPrice3 = tickerMap[pair3_Case2]?.askPrice; // CoinB per BaseCoin
+                 if (askPrice3) {
+                     finalAmount = amountCoinB * (1 / askPrice3); // BaseCoin per CoinB
+                     pair3 = pair3_Case2; step3PairUsed = pair3; step3PriceUsedForDesc = askPrice3; step3CalcRate = 1 / askPrice3; step3IsSell = true;
+                 }
+             }
+
+             // --- Final Calculation Checks ---
+             if (!step3IsSell || !Number.isFinite(finalAmount) || finalAmount <= 0) {
+                 // logAnomaly({ step: 3, pair1, pair2, pair3: step3PairUsed, amountCoinB, finalAmount });
+                 continue; // Skip if calculation failed
+             }
+
+             const profit = finalAmount - startAmount;
+             const profitPercent = startAmount > 0 ? (profit / startAmount) * 100 : 0;
+
+             // Check for NaN/Infinity/Extreme Profit % before formatting/pushing
+             if (!Number.isFinite(profit) || !Number.isFinite(profitPercent)) {
+                  logAnomaly({ event: "Result NaN/Infinity", path: [pair1, step2PairUsed, step3PairUsed], profit, profitPercent, finalAmount, startAmount });
+                  continue;
+             }
+             // Log if profit % is absurdly high, might indicate issue even if finite
+             if (Math.abs(profitPercent) > EXTREME_PROFIT_THRESHOLD) {
+                 logAnomaly({ event: "Extreme Profit % Detected", path: [pair1, step2PairUsed, step3PairUsed], profitPercent, finalAmount, startAmount, amountCoinA, amountCoinB });
+                 // Optionally 'continue;' here if you ALWAYS want to discard these extreme values
+                 // continue;
+             }
+             // --- End Final Checks ---
+
+
+             // Format step descriptions
+             const step1Desc = `Buy ${coinA} w/ ${baseCoin} @ ${trade1Rate.toPrecision(6)} (${pair1})`;
+             const step2Desc = step2IsBuy ? `Buy ${coinB} w/ ${coinA} @ ${step2PriceUsedForDesc.toPrecision(6)} (${step2PairUsed})`
+                                         : `Sell ${coinA} for ${coinB} @ ${step2PriceUsedForDesc.toPrecision(6)} (${step2PairUsed})`;
+             const step3Desc = step3PairUsed.startsWith(coinB) ? `Sell ${coinB} for ${baseCoin} @ ${step3PriceUsedForDesc.toPrecision(6)} (${step3PairUsed})`
+                                                              : `Sell ${coinB} for ${baseCoin} @ ${step3CalcRate.toPrecision(6)} (${step3PairUsed} inv)`;
+
+             opportunities.push({
+                 steps: [step1Desc, step2Desc, step3Desc],
+                 path: [pair1, step2PairUsed, step3PairUsed],
+                 coins: [baseCoin, coinA, coinB],
+                 amount: startAmount,
+                 profit: profit,
+                 profitPercent: profitPercent,
+                 base: baseCoin
+             });
+        }
+      }
+      return opportunities;
+    }
+    // ==================================================================
+
+    // --- Initial Load ---
+    window.onload = () => {
+        document.getElementById("tradeAmount").addEventListener('change', fetchAndDisplayData);
+        document.getElementById("minProfitPercent").addEventListener('change', fetchAndDisplayData);
+        document.getElementById("maxProfitPercent").addEventListener('change', fetchAndDisplayData); // Add listener for max %
+        startAutoRefresh();
+    };
+
+  </script>
+</body>
+</html>
