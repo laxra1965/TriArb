@@ -24,25 +24,20 @@
         /* --- End View Control Styles --- */
 
         /* --- Header Styles --- */
-        .main-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0px; margin-bottom: 20px; border-bottom: 1px solid #30363d; }
-        .main-header h1 { margin: 0; font-size: 1.6em; color: #58a6ff; text-align: left; flex-grow: 1; margin-right: 20px; }
-        .user-auth-section { display: flex; align-items: center; flex-shrink: 0; }
+        .main-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0px; margin-bottom: 20px; border-bottom: 1px solid #30363d; flex-wrap: wrap; }
+        .main-header h1 { margin: 0; font-size: 1.6em; color: #58a6ff; text-align: left; flex-grow: 1; margin-right: 20px; margin-bottom: 5px; }
+        .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-bottom: 5px; }
+        .header-actions button { font-size: 0.9em; padding: 6px 12px;}
+
+        .user-auth-section { display: flex; align-items: center; flex-shrink: 0; margin-left: auto;  }
         .user-profile { display: flex; align-items: center; background-color: #161b22; padding: 6px 12px; border-radius: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .user-profile img { width: 30px; height: 30px; border-radius: 50%; margin-right: 8px; }
         .user-profile span { margin-right: 10px; font-size: 0.9em; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         #logoutBtn { padding: 4px 8px; font-size: 0.8em; }
         /* --- End Header Styles --- */
 
-        /* --- Original Table, Controls, Modal, etc. Styles (Unchanged) --- */
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #161b22; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        th, td { padding: 10px 12px; border-bottom: 1px solid #30363d; text-align: center; font-size: 0.9em; }
-        th { background-color: #21262d; color: #8b949e; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        th.exchange-col { width: 80px; }
-        tr:last-child td { border-bottom: none; }
-        tr:hover { background-color: #1c2128; }
         .profit { color: #3fb950; font-weight: bold; } .loss { color: #f85149; } .error-value { color: orange; font-weight: bold; }
-        .controls, .api-settings { background-color: #161b22; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 15px; }
+        .api-settings { background-color: #161b22; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .api-settings h3 { margin-top: 0; margin-bottom: 15px; color: #8b949e; font-size: 1.1em; border-bottom: 1px solid #30363d; padding-bottom: 8px; }
         .api-section { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed #30363d; }
         .api-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
@@ -55,33 +50,88 @@
         button.trade-btn { background-color: #58a6ff; } button.trade-btn:hover:not(:disabled) { background-color: #79b8ff; }
         button.danger { background-color: #da3633; } button.danger:hover:not(:disabled) { background-color: #f85149; }
         button.connect-btn { background-color: #1f6feb; } button.connect-btn:hover:not(:disabled) { background-color: #388bfd; }
-        tr.highlight { background-color: rgba(94, 134, 255, 0.15); border-left: 3px solid #58a6ff; } tr.highlight td { font-weight: bold; }
-        td:nth-child(2), td:nth-child(3), td:nth-child(4) { font-family: 'Courier New', Courier, monospace; font-size: 0.85em; white-space: nowrap; }
-        td:nth-child(1) { font-weight: 500; font-size: 0.85em;} td:nth-child(6), td:nth-child(7), td:nth-child(8) { font-weight: 500; }
-        .loading-message { text-align: center; padding: 20px; font-style: italic; color: #8b949e; } .trade-actions { width: 80px; min-width: 80px; }
         .api-form { display: flex; flex-direction: column; gap: 20px; margin-top: 10px; } .form-group { display: flex; flex-direction: column; gap: 5px; }
         .form-group label { font-weight: 500; align-self: flex-start; } .form-group input[type="text"], .form-group input[type="password"] { width: 100%; max-width: 400px; box-sizing: border-box; margin-left: 0; }
         .toggle-api-btn { background-color: #30363d; color: #c9d1d9; margin-bottom: 15px; } .toggle-api-btn:hover:not(:disabled) { background-color: #484f58; }
         .status-indicator { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: middle; } .status-connected { background-color: #3fb950; } .status-disconnected { background-color: #f85149; }
         .api-status { display: flex; align-items: center; font-size: 0.9em; margin-bottom: 10px; } .hidden { display: none !important; }
         .trade-log { background-color: #161b22; padding: 15px; border-radius: 8px; margin-top: 20px; max-height: 200px; overflow-y: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.3); border: 1px solid #30363d; }
-        .trade-log h3 { margin-top: 0; margin-bottom: 10px; color: #8b949e; font-size: 1em; } .log-entry { padding: 3px 0; border-bottom: 1px solid #30363d; font-family: 'Courier New', monospace; font-size: 0.85em; line-height: 1.4; } .log-entry:last-child { border-bottom: none; }
+        .trade-log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;}
+        .trade-log-header h3 { margin-top: 0; margin-bottom: 0; color: #8b949e; font-size: 1em; }
+        .trade-log-header button {font-size: 0.85em; padding: 4px 8px;}
+        .log-entry { padding: 3px 0; border-bottom: 1px solid #30363d; font-family: 'Courier New', monospace; font-size: 0.85em; line-height: 1.4; } .log-entry:last-child { border-bottom: none; }
         .log-time { color: #8b949e; margin-right: 8px; } .log-success { color: #3fb950; } .log-error { color: #f85149; } .log-info { color: #58a6ff; }
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(13, 17, 23, 0.8); overflow: auto; }
-        .modal-content { background-color: #161b22; margin: 10% auto; padding: 25px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); width: 90%; max-width: 550px; border: 1px solid #30363d; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(13, 17, 23, 0.8); align-items: center; justify-content: center;}
+        .modal-content { background-color: #161b22; margin: auto; padding: 25px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); width: 90%; max-width: 650px; border: 1px solid #30363d; max-height: 85vh; display: flex; flex-direction: column; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px; flex-shrink: 0; }
         .modal-title { font-size: 1.3em; font-weight: bold; color: #58a6ff; } .close-modal { color: #8b949e; font-size: 1.8em; font-weight: bold; cursor: pointer; line-height: 1; } .close-modal:hover { color: #c9d1d9; }
-        .modal-body { margin-bottom: 25px; line-height: 1.6; } .modal-body p { margin-bottom: 10px; } .modal-body ol { margin-left: 20px; padding-left: 10px; } .modal-body li { margin-bottom: 5px; font-family: 'Courier New', Courier, monospace; }
-        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
+        .modal-body { margin-bottom: 25px; line-height: 1.6; overflow-y: auto; flex-grow: 1; } 
+        .modal-body p { margin-bottom: 10px; } .modal-body ol { margin-left: 20px; padding-left: 10px; } .modal-body li { margin-bottom: 5px; font-family: 'Courier New', Courier, monospace; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; padding-top: 15px; border-top: 1px solid #30363d; flex-shrink: 0;}
         .scanner-status { font-size: 0.85em; color: #8b949e; margin-left: 8px; font-style: italic; }
-        /* Responsive Styles Unchanged */
-        @media (max-width: 900px) { th, td { padding: 8px 6px; } td:nth-child(2), td:nth-child(3), td:nth-child(4) { white-space: normal; word-break: break-word; font-size: 0.8em; } } @media (max-width: 768px) { body { padding: 15px; } .main-header { flex-direction: column; align-items: center; padding: 15px 0px; } .main-header h1 { margin-bottom: 15px; text-align: center; margin-right: 0; font-size: 1.5em; } .user-auth-section { margin-top: 10px; } .user-profile span { max-width: 120px; } .controls { flex-direction: column; align-items: stretch; } .controls > div { width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 5px; } .controls > div label { flex-shrink: 0; margin-right: 10px; } .controls > div input, .controls > div button { max-width: 150px; flex-grow: 1; } .controls > div button { max-width: 100px; } .controls > div input[type="checkbox"] { margin-left: auto; max-width: fit-content; flex-grow: 0; } .controls > div span.scanner-status { width: 100%; text-align: right; flex-basis: 100%; } th, td { font-size: 0.85em; padding: 8px 4px; } td:nth-child(2), td:nth-child(3), td:nth-child(4) { font-size: 0.75em; } td:nth-child(1) { font-size: 0.8em; } button { padding: 8px 12px; } input[type="number"] { width: 60px; } .form-group input[type="text"], .form-group input[type="password"] { max-width: none; } .modal-content { margin: 15% auto; } } @media (max-width: 480px) { body { padding: 10px; } .main-header h1 { font-size: 1.3em; } th, td { font-size: 0.8em; padding: 6px 3px; } button { padding: 6px 10px; } input[type="number"] { width: 55px; padding: 5px 8px; } .controls { padding: 10px; gap: 12px; } .controls > div input, .controls > div button { max-width: 120px; } .controls > div button { max-width: 80px; } td:nth-child(2), td:nth-child(3), td:nth-child(4) { font-size: 0.65em; } td:nth-child(1) { font-size: 0.7em; } .modal-content { width: 95%; margin: 20% auto; padding: 15px; } .modal-title { font-size: 1.1em; } .modal-body { font-size: 0.9em; } }
 
+        .settings-modal-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .settings-section { background-color: #0d1117; padding: 15px; border-radius: 6px; border: 1px solid #30363d;}
+        .settings-section h4 { margin-top: 0; margin-bottom: 15px; color: #8b949e; font-size: 1.1em; border-bottom: 1px solid #30363d; padding-bottom: 8px;}
+        .settings-control-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 15px; }
+        .settings-control-group > div { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 5px;}
+        .settings-control-group label { flex-basis: auto; text-align: left; margin-right: 10px; }
+        .settings-control-group input[type="number"] { width: 80px; margin-left: 0; }
+        .settings-control-group input[type="checkbox"] { margin-left: 0; }
+
+
+        .exchange-selection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+        .exchange-selection-grid label { background-color: #161b22; padding: 8px; border-radius: 4px; border: 1px solid #30363d; transition: background-color 0.2s; display: flex; align-items: center; }
+        .exchange-selection-grid label:hover { background-color: #21262d; }
+        .exchange-selection-grid input[type="checkbox"] { margin-right: 8px; }
+
+        .arb-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .arb-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 1rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; }
+        .arb-card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
+        .arb-card.highlight { border-left: 3px solid #58a6ff; background-color: rgba(88, 166, 255, 0.07); box-shadow: 0 0 15px rgba(88, 166, 255, 0.2); }
+        .card-header { display: flex; justify-content: center; align-items: center; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #30363d; text-align: center; }
+        .card-path { font-family: 'Courier New', Courier, monospace; font-size: 1em; color: #c9d1d9; font-weight: 500; }
+        .exchange-logo-container { display: flex; justify-content: center; align-items: center; margin-bottom: 1rem; padding: 8px 0; }
+        .exchange-logo-container img { height: 32px; width: auto; max-width: 120px; object-fit: contain; }
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1rem; }
+        .step-card { background: #21262d; padding: 0.75rem; border-radius: 8px; border: 1px solid #30363d; font-size: 0.85em; line-height: 1.4; display: flex; flex-direction: column; }
+        .step-card div:first-child { color: #8b949e; font-size: 0.9em; font-weight: 600; margin-bottom: 0.4rem; }
+        
+        .step-card-pair-details { /* Applied to the div holding action + description */
+             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+             word-break: break-word;
+             font-size: 0.98em; 
+             line-height: 1.5;  
+             color: #c9d1d9; 
+        }
+        .step-action-buy {
+            color: #3fb950; /* Green for BUY */
+            font-weight: 600;
+            margin-right: 4px; /* Space between BUY/SELL and description */
+        }
+        .step-action-sell {
+            color: #f85149; /* Red for SELL */
+            font-weight: 600;
+            margin-right: 4px; /* Space between BUY/SELL and description */
+        }
+
+        .profit-section { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #30363d; margin-top: auto; }
+        .profit-details { font-size: 0.9em; line-height: 1.5; }
+        .profit-details .start-amount { color: #8b949e; }
+        .profit-value { font-size: 1.1em; font-weight: 600; display: block; margin-top: 4px; }
+        .profit-positive { color: #3fb950; } .profit-negative { color: #f85149; }
+        .loading-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 2rem; text-align: center; color: #8b949e; animation: pulse 1.5s infinite; margin: 2rem auto; width: 100%; max-width: 400px; grid-column: 1 / -1; }
+        .loading-card.error-value { color: orange; font-weight: bold; animation: none; }
+        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+        
+        @media (max-width: 1023px) { .steps-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { body { padding: 15px; } .main-header { flex-direction: column; align-items: flex-start; gap: 10px;} .main-header h1 { margin-bottom: 0; font-size: 1.4em; } .header-actions { width: 100%; justify-content: flex-start; } .user-auth-section { margin-left: 0; margin-top:10px; width:100%; justify-content: flex-end;} .user-profile span { max-width: 100px; } .arb-card { padding: 0.75rem; } .exchange-logo-container img { height: 28px; } .step-card { padding: 0.5rem; } .profit-section { flex-direction: column; align-items: flex-start; gap: 8px; } .profit-section .trade-btn { width: 100%; text-align: center; } .modal-content { width: 95%; margin: 5% auto;} .settings-control-group > div { flex-direction: column; align-items: flex-start; gap: 5px;} .settings-control-group input[type="number"] { width: 100px; margin-left:0;} }
+        @media (max-width: 480px) { body { padding: 10px; } .main-header h1 { font-size: 1.2em; } .header-actions button {padding: 5px 8px; font-size: 0.8em;} .exchange-logo-container img { height: 24px; } .card-path { font-size: 0.9em; } .step-card-pair-details { font-size: 0.9em; } .modal-title {font-size: 1.1em;}}
     </style>
 </head>
-
 <body>
-
+    <!-- HTML structure identical to the previous 'full code' response with settings modal, etc. -->
     <div id="loginView">
         <h2>Arbitrage Scanner & Trader</h2>
         <div id="g_id_onload" data-client_id="485859398037-pcstgi0p5j5jqm3v5vm4fj0162to0qle.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="false"></div>
@@ -91,169 +141,340 @@
     </div>
 
     <div id="mainAppView">
-        <!-- Main application content -->
         <header class="main-header">
             <h1>Triangular Arbitrage Scanner & Trader</h1>
+            <div class="header-actions">
+                <button id="openSettingsModalBtn">⚙️ Settings</button>
+                <button id="pausePlayBtn">Pause</button> 
+                <span id="scannerStatusText" class="scanner-status">(Status: Stopped)</span>
+            </div>
             <div class="user-auth-section">
                 <div id="userProfileContainer" class="hidden"> <div class="user-profile"> <img id="userProfilePic" src="" alt="Profile" /> <span id="userDisplayName"></span> <button id="logoutBtn" class="danger">Logout</button> </div> </div>
             </div>
         </header>
-        <div class="api-settings"> <button id="toggleApiSettings" class="toggle-api-btn">Show API Settings</button> <div id="apiForm" class="api-form hidden"> <div class="api-section"> <h3>Binance API</h3> <div class="api-status"> <span class="status-indicator status-disconnected" id="binanceApiStatusIndicator"></span> <span id="binanceApiStatusText">Binance API Disconnected</span> </div> <div class="form-group"> <label for="binanceApiKey">API Key:</label> <input type="text" id="binanceApiKey" placeholder="Enter Binance API Key" autocomplete="off" /> </div> <div class="form-group"> <label for="binanceApiSecret">API Secret:</label> <input type="password" id="binanceApiSecret" placeholder="Enter Binance API Secret" autocomplete="new-password" /> </div> <div class="form-group"> <label><input type="checkbox" id="binanceTestMode" checked /> Test Mode</label> </div> <div> <button id="connectBinanceApi" class="connect-btn">Connect Binance</button> <button id="disconnectBinanceApi" class="danger hidden">Disconnect Binance</button> </div> </div> <div class="api-section"> <h3>Bybit API</h3> <div class="api-status"> <span class="status-indicator status-disconnected" id="bybitApiStatusIndicator"></span> <span id="bybitApiStatusText">Bybit API Disconnected</span> </div> <div class="form-group"> <label for="bybitApiKey">API Key:</label> <input type="text" id="bybitApiKey" placeholder="Enter Bybit API Key" autocomplete="off" /> </div> <div class="form-group"> <label for="bybitApiSecret">API Secret:</label> <input type="password" id="bybitApiSecret" placeholder="Enter Bybit API Secret" autocomplete="new-password" /> </div> <div class="form-group"> <label><input type="checkbox" id="bybitTestMode" checked /> Test Mode</label> </div> <div> <button id="connectBybitApi" class="connect-btn">Connect Bybit</button> <button id="disconnectBybitApi" class="danger hidden">Disconnect Bybit</button> </div> </div> </div> </div>
-        <div class="controls"> <div> <label for="refreshRate">Refresh (sec):</label> <input type="number" id="refreshRate" value="5" min="2" max="60" /> <button onclick="applySettings()">Apply</button> </div> <div> <button id="pausePlayBtn" onclick="toggleScanner()">Pause</button> <span id="scannerStatusText" class="scanner-status">(Status: Stopped)</span> </div> <div> <label for="tradeAmount">Approx. Trade Amount (USDT):</label> <input type="number" id="tradeAmount" value="10" min="1" step="1" /> </div> <div> <label><input type="checkbox" id="filterProfitable" checked /> Show only profitable</label> </div> <div> <label for="minProfitPercent">Min Profit (%):</label> <input type="number" id="minProfitPercent" value="0.05" min="0" step="0.01" /> </div> <div> <label for="maxProfitPercent">Max Profit (%):</label> <input type="number" id="maxProfitPercent" value="50" min="0.1" step="0.1" title="Filter out unrealistic profits" /> </div> <div> <label><input type="checkbox" id="autoTrade" disabled title="Connect an API to enable Auto-Trade" /> Auto-Trade Top Result</label> </div> </div>
-        <table id="arbTable"> <thead> <tr> <th class="exchange-col">Exchange</th> <th>Step 1</th> <th>Step 2</th> <th>Step 3</th> <th>Base Coin</th> <th>Start Amt</th> <th>Profit</th> <th>Profit (%)</th> <th class="trade-actions">Action</th> </tr> </thead> <tbody> <tr> <td colspan="9" class="loading-message">Waiting for scanner to start...</td> </tr> </tbody> </table>
-        <div class="trade-log"> <h3>Trade Log</h3> <div id="logEntries"> <div class="log-entry"> <span class="log-time">[System]</span> <span class="log-info">Please log in or skip to initialize.</span> </div> </div> </div>
-        <div id="confirmModal" class="modal"> <div class="modal-content"> <div class="modal-header"> <span class="modal-title">Confirm Trade</span> <span class="close-modal" id="closeModalBtn">×</span> </div> <div class="modal-body" id="confirmModalBody"> Loading... </div> <div class="modal-actions"> <button id="cancelTradeBtn" class="danger">Cancel</button> <button id="confirmTradeBtn" class="trade-btn">Confirm Trade</button> </div> </div> </div>
+        
+        <div class="api-settings"> 
+            <button id="toggleApiSettings" class="toggle-api-btn">Show API Connection Settings</button> 
+            <div id="apiForm" class="api-form hidden"> 
+                <div class="api-section"> <h3>Binance API</h3> <div class="api-status"> <span class="status-indicator status-disconnected" id="binanceApiStatusIndicator"></span> <span id="binanceApiStatusText">Binance API Disconnected</span> </div> <div class="form-group"> <label for="binanceApiKey">API Key:</label> <input type="text" id="binanceApiKey" placeholder="Enter Binance API Key" autocomplete="off" /> </div> <div class="form-group"> <label for="binanceApiSecret">API Secret:</label> <input type="password" id="binanceApiSecret" placeholder="Enter Binance API Secret" autocomplete="new-password" /> </div> <div class="form-group"> <label><input type="checkbox" id="binanceTestMode" checked /> Test Mode</label> </div> <div> <button id="connectBinanceApi" class="connect-btn">Connect Binance</button> <button id="disconnectBinanceApi" class="danger hidden">Disconnect Binance</button> </div> </div> 
+                <div class="api-section"> <h3>Bybit API</h3> <div class="api-status"> <span class="status-indicator status-disconnected" id="bybitApiStatusIndicator"></span> <span id="bybitApiStatusText">Bybit API Disconnected</span> </div> <div class="form-group"> <label for="bybitApiKey">API Key:</label> <input type="text" id="bybitApiKey" placeholder="Enter Bybit API Key" autocomplete="off" /> </div> <div class="form-group"> <label for="bybitApiSecret">API Secret:</label> <input type="password" id="bybitApiSecret" placeholder="Enter Bybit API Secret" autocomplete="new-password" /> </div> <div class="form-group"> <label><input type="checkbox" id="bybitTestMode" checked /> Test Mode</label> </div> <div> <button id="connectBybitApi" class="connect-btn">Connect Bybit</button> <button id="disconnectBybitApi" class="danger hidden">Disconnect Bybit</button> </div> </div> 
+            </div> 
+        </div>
+        
+        <div id="arbCardContainer" class="arb-container">
+            <div class="loading-card">Waiting for scanner to start...</div>
+        </div>
 
-        <!-- **** REMOVED DUPLICATE SECTION FROM HERE **** -->
+        <div class="trade-log"> 
+            <div class="trade-log-header">
+                <h3>Trade Log</h3>
+                <button id="downloadLogBtn">Download Log (CSV)</button>
+            </div>
+            <div id="logEntries"> <div class="log-entry"> <span class="log-time">[System]</span> <span class="log-info">Please log in or skip to initialize.</span> </div> </div> 
+        </div>
 
-    </div> <!-- End #mainAppView -->
+        <div id="confirmModal" class="modal"> 
+            <div class="modal-content"> 
+                <div class="modal-header"> <span class="modal-title">Confirm Trade</span> <span class="close-modal" id="closeConfirmModalBtn">×</span> </div> 
+                <div class="modal-body" id="confirmModalBody"> Loading... </div> 
+                <div class="modal-actions"> <button id="cancelTradeBtn" class="danger">Cancel</button> <button id="confirmTradeBtn" class="trade-btn">Confirm Trade</button> </div> 
+            </div> 
+        </div>
 
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title">Scanner Settings</span>
+                    <span class="close-modal" id="closeSettingsModalBtn">×</span>
+                </div>
+                <div class="modal-body settings-modal-grid">
+                    <div class="settings-section">
+                        <h4>General Controls</h4>
+                        <div class="settings-control-group">
+                            <div><label for="refreshRate">Refresh (sec):</label> <input type="number" id="refreshRate" value="5" min="2" max="60" /></div>
+                            <div><label for="tradeAmount">Approx. Trade Amount (USDT):</label> <input type="number" id="tradeAmount" value="10" min="1" step="1" /></div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h4>Filters</h4>
+                        <div class="settings-control-group">
+                           <div><label><input type="checkbox" id="filterProfitable" checked /> Show only profitable</label></div>
+                           <div><label for="minProfitPercent">Min Profit (%):</label> <input type="number" id="minProfitPercent" value="0.05" min="0" step="0.01" /></div>
+                           <div><label for="maxProfitPercent">Max Profit (%):</label> <input type="number" id="maxProfitPercent" value="50" min="0.1" step="0.1" title="Filter out unrealistic profits" /></div>
+                           <div><label><input type="checkbox" id="autoTrade" disabled title="Connect an API to enable Auto-Trade" /> Auto-Trade Top Result</label></div>
+                        </div>
+                    </div>
+                     <div class="settings-section">
+                        <h4>Enabled Exchanges</h4>
+                        <div id="exchangeSelectionContainer" class="exchange-selection-grid">
+                            {/* Checkboxes will be populated by JavaScript */}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="applySettingsBtn" class="trade-btn">Apply & Restart Scanner</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         // --- State Variables ---
         let autoRefreshInterval; let currentRefreshRate = 5;
-        const BINANCE_PUBLIC_API_URL = "https://api.binance.com/api/v3"; const BINANCE_AUTH_API_URL = "https://api.binance.com/api/v3";
-        const BYBIT_PUBLIC_API_URL = "https://api.bybit.com"; const BYBIT_AUTH_API_URL = "https://api.bybit.com";
+        let selectedExchanges = []; 
+        
+        const API_CONFIG = { /* From previous response */
+            Binance:    { type: 'single', url: "https://api.binance.com/api/v3/ticker/bookTicker" },
+            Bybit:      { type: 'single', url: "https://api.bybit.com/v5/market/tickers?category=spot" },
+            OKX:        { type: 'single', url: "https://www.okx.com/api/v5/market/tickers?instType=SPOT" },
+            Bitget:     { type: 'single', url: "https://api.bitget.com/api/v2/spot/market/tickers" }, 
+            MEXC:       { type: 'single', url: "https://api.mexc.com/api/v3/ticker/bookTicker" },
+            Gate:       { type: 'single', url: "https://api.gateio.ws/api/v4/spot/tickers" }, 
+            HTX:        { type: 'single', url: "https://api.htx.com/market/tickers" }, 
+            KuCoin:     { type: 'single', url: "https://api.kucoin.com/api/v1/market/allTickers" },
+            Bitfinex:   { type: 'single', url: "https://api-pub.bitfinex.com/v2/tickers?symbols=ALL" }, 
+            BingX:      { type: 'single', url: "https://open-api.bingx.com/openApi/spot/v1/market/ticker"}, 
+            Coinbase: { 
+                type: 'multi_step_individual', 
+                list_url: "https://api.exchange.coinbase.com/products",
+                ticker_url_template: "https://api.exchange.coinbase.com/products/{id}/book?level=1" 
+            },
+            Upbit: { 
+                type: 'multi_step_batch', 
+                list_url: "https://api.upbit.com/v1/market/all?isDetails=false",
+                ticker_url_base: "https://api.upbit.com/v1/orderbook?markets=" 
+            },
+            CryptoCom: { 
+                type: 'multi_step_individual',
+                list_url: "https://api.crypto.com/exchange/v1/public/get-instruments",
+                ticker_url_template: "https://api.crypto.com/exchange/v1/public/get-ticker?instrument_name={instrument_name}"
+            },
+            Kraken: {
+                type: 'multi_step_batch',
+                list_url: "https://api.kraken.com/0/public/AssetPairs",
+                ticker_url_base: "https://api.kraken.com/0/public/Ticker?pair="
+            }
+        };
+
         const EXTREME_PROFIT_THRESHOLD = 1000; const AUTO_TRADE_MIN_PROFIT_PERCENT = 0.2;
         let binanceApiConnected = false; let binanceApiKey = ''; let binanceApiSecret = ''; let binanceTestMode = true;
         let bybitApiConnected = false; let bybitApiKey = ''; let bybitApiSecret = ''; let bybitTestMode = true;
+
         let currentArbitrageOpportunities = []; let pendingTradeOp = null; let isTradeExecuting = false; let isScannerRunning = false;
         let currentUser = null; const USER_STORAGE_PREFIX = 'arb_scanner_user_';
+        
+        let mainAppView, loginView, 
+            opportunitiesContainerElement, toggleApiBtn, apiForm, 
+            binanceApiKeyInput, binanceApiSecretInput, binanceTestModeCheckbox, connectBinanceApiBtn, disconnectBinanceApiBtn, binanceApiStatusIndicator, binanceApiStatusText, 
+            bybitApiKeyInput, bybitApiSecretInput, bybitTestModeCheckbox, connectBybitApiBtn, disconnectBybitApiBtn, bybitApiStatusIndicator, bybitApiStatusText, 
+            logEntriesContainer, confirmModal, confirmModalBody, closeConfirmModalBtn, cancelTradeBtn, confirmTradeBtn, 
+            pausePlayBtn, scannerStatusText, 
+            userProfileContainer, userProfilePic, userDisplayName, logoutBtn, skipLoginBtn,
+            openSettingsModalBtn, settingsModal, closeSettingsModalBtn, applySettingsBtn, downloadLogBtn,
+            exchangeSelectionContainer,
+            refreshRateInput, tradeAmountInput, filterProfitableCheckbox, 
+            minProfitPercentInput, maxProfitPercentInput, autoTradeCheckbox;
 
-        // --- DOM Elements Cache (Variables declared) ---
-        let mainAppView, loginView, refreshRateInput, tradeAmountInput, filterProfitableCheckbox, minProfitPercentInput, maxProfitPercentInput, autoTradeCheckbox, arbTableBody, toggleApiBtn, apiForm, binanceApiKeyInput, binanceApiSecretInput, binanceTestModeCheckbox, connectBinanceApiBtn, disconnectBinanceApiBtn, binanceApiStatusIndicator, binanceApiStatusText, bybitApiKeyInput, bybitApiSecretInput, bybitTestModeCheckbox, connectBybitApiBtn, disconnectBybitApiBtn, bybitApiStatusIndicator, bybitApiStatusText, logEntriesContainer, confirmModal, confirmModalBody, closeModalBtn, cancelTradeBtn, confirmTradeBtn, pausePlayBtn, scannerStatusText, userProfileContainer, userProfilePic, userDisplayName, logoutBtn, skipLoginBtn;
-
-        // --- Centralized Function to Initialize the App View ---
-        function initializeAppView() {
-            console.log("Initializing App View...");
-            mainAppView = document.getElementById('mainAppView'); loginView = document.getElementById('loginView');
-            if (!mainAppView || !loginView) { console.error("Core view elements not found!"); return; }
-
-            // Cache elements within #mainAppView FIRST
-            refreshRateInput = document.getElementById("refreshRate"); tradeAmountInput = document.getElementById("tradeAmount"); filterProfitableCheckbox = document.getElementById("filterProfitable"); minProfitPercentInput = document.getElementById("minProfitPercent"); maxProfitPercentInput = document.getElementById("maxProfitPercent"); autoTradeCheckbox = document.getElementById("autoTrade"); arbTableBody = document.querySelector("#arbTable tbody"); toggleApiBtn = document.getElementById("toggleApiSettings"); apiForm = document.getElementById("apiForm"); binanceApiKeyInput = document.getElementById("binanceApiKey"); binanceApiSecretInput = document.getElementById("binanceApiSecret"); binanceTestModeCheckbox = document.getElementById("binanceTestMode"); connectBinanceApiBtn = document.getElementById("connectBinanceApi"); disconnectBinanceApiBtn = document.getElementById("disconnectBinanceApi"); binanceApiStatusIndicator = document.getElementById("binanceApiStatusIndicator"); binanceApiStatusText = document.getElementById("binanceApiStatusText"); bybitApiKeyInput = document.getElementById("bybitApiKey"); bybitApiSecretInput = document.getElementById("bybitApiSecret"); bybitTestModeCheckbox = document.getElementById("bybitTestMode"); connectBybitApiBtn = document.getElementById("connectBybitApi"); disconnectBybitApiBtn = document.getElementById("disconnectBybitApi"); bybitApiStatusIndicator = document.getElementById("bybitApiStatusIndicator"); bybitApiStatusText = document.getElementById("bybitApiStatusText"); logEntriesContainer = document.getElementById("logEntries"); confirmModal = document.getElementById("confirmModal"); confirmModalBody = document.getElementById("confirmModalBody"); closeModalBtn = document.getElementById("closeModalBtn"); cancelTradeBtn = document.getElementById("cancelTradeBtn"); confirmTradeBtn = document.getElementById("confirmTradeBtn"); pausePlayBtn = document.getElementById("pausePlayBtn"); scannerStatusText = document.getElementById("scannerStatusText"); userProfileContainer = document.getElementById('userProfileContainer'); userProfilePic = document.getElementById('userProfilePic'); userDisplayName = document.getElementById('userDisplayName'); logoutBtn = document.getElementById('logoutBtn');
-
-            // Set Display AFTER caching elements inside mainAppView
-            mainAppView.style.display = 'block'; loginView.style.display = 'none';
-            document.body.classList.add('state-logged-in'); document.body.classList.remove('state-logged-out');
-            document.title = "Arbitrage Scanner & Trader";
-
-            // Add event listeners using the cached elements
-            if (logoutBtn) logoutBtn.addEventListener("click", handleLogout); else console.warn("Logout button not found");
-            if (toggleApiBtn) toggleApiBtn.addEventListener("click", toggleApiSettings); else console.warn("toggleApiBtn not found");
-            if (connectBinanceApiBtn) connectBinanceApiBtn.addEventListener("click", connectBinanceApi); else console.warn("connectBinanceApiBtn not found");
-            if (disconnectBinanceApiBtn) disconnectBinanceApiBtn.addEventListener("click", disconnectBinanceApi); else console.warn("disconnectBinanceApiBtn not found");
-            if (connectBybitApiBtn) connectBybitApiBtn.addEventListener("click", connectBybitApi); else console.warn("connectBybitApiBtn not found");
-            if (disconnectBybitApiBtn) disconnectBybitApiBtn.addEventListener("click", disconnectBybitApi); else console.warn("disconnectBybitApiBtn not found");
-            if (tradeAmountInput) tradeAmountInput.addEventListener('input', () => saveUserSetting('tradeAmount', tradeAmountInput.value)); else console.warn("tradeAmountInput not found");
-            if (minProfitPercentInput) minProfitPercentInput.addEventListener('input', () => { saveUserSetting('minProfitPercent', minProfitPercentInput.value); if (isScannerRunning) fetchAndDisplayData(); }); else console.warn("minProfitPercentInput not found");
-            if (maxProfitPercentInput) maxProfitPercentInput.addEventListener('input', () => { saveUserSetting('maxProfitPercent', maxProfitPercentInput.value); if (isScannerRunning) fetchAndDisplayData(); }); else console.warn("maxProfitPercentInput not found");
-            if (filterProfitableCheckbox) filterProfitableCheckbox.addEventListener('change', () => { saveUserSetting('filterProfitable', filterProfitableCheckbox.checked); if (isScannerRunning) fetchAndDisplayData(); }); else console.warn("filterProfitableCheckbox not found");
-            if (refreshRateInput) refreshRateInput.addEventListener('input', () => {}); else console.warn("refreshRateInput not found");
-            if (binanceTestModeCheckbox) binanceTestModeCheckbox.addEventListener('change', () => { if (!binanceApiConnected) saveUserSetting('binanceTestModeDefault', binanceTestModeCheckbox.checked); else { binanceTestMode = binanceTestModeCheckbox.checked; updateApiStatusUI(); logToConsole(`Binance mode set to ${binanceTestMode ? 'Test' : 'Live'}.`, 'info'); } }); else console.warn("binanceTestModeCheckbox not found");
-            if (bybitTestModeCheckbox) bybitTestModeCheckbox.addEventListener('change', () => { if (!bybitApiConnected) saveUserSetting('bybitTestModeDefault', bybitTestModeCheckbox.checked); else { bybitTestMode = bybitTestModeCheckbox.checked; updateApiStatusUI(); logToConsole(`Bybit mode set to ${bybitTestMode ? 'Test' : 'Live'}.`, 'info'); } }); else console.warn("bybitTestModeCheckbox not found");
-            if (confirmTradeBtn) confirmTradeBtn.addEventListener("click", confirmTrade); else console.warn("confirmTradeBtn not found");
-            if (cancelTradeBtn) cancelTradeBtn.addEventListener("click", closeModal); else console.warn("cancelTradeBtn not found");
-            if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal); else console.warn("closeModalBtn not found");
-            if (pausePlayBtn) pausePlayBtn.addEventListener("click", toggleScanner); else console.warn("pausePlayBtn not found");
-            window.addEventListener("click", (event) => { if (event.target === confirmModal) closeModal(); });
-
-            // Update profile display based on login status
-             updateProfileDisplay();
-            // Load settings and start scanner
-            loadAllSettings();
-            startAutoRefresh();
-        }
-
-        // --- Local Storage Helpers ---
+        // --- Function Definitions ---
         function saveSetting(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { console.error("Error saving setting:", key, e); if(logEntriesContainer) logToConsole(`Error saving setting ${key}`, "error"); } }
         function loadSetting(key, defaultValue) { try { const v = localStorage.getItem(key); return v !== null ? JSON.parse(v) : defaultValue; } catch (e) { console.error("Error loading setting:", key, e); if(logEntriesContainer) logToConsole(`Error loading setting ${key}`, "error"); return defaultValue; } }
-
-        // --- View State Management ---
-        function updateProfileDisplay() { // Separated profile update logic
-             if (!document.body.classList.contains('state-logged-in')) return; // Only run if app view active
-             const currentLogoutBtn = document.getElementById('logoutBtn');
-             const currentUserProfileContainer = document.getElementById('userProfileContainer');
-
-             if (currentUser) { // Logged In
-                 if (currentUserProfileContainer) currentUserProfileContainer.classList.remove('hidden'); else console.warn("#userProfileContainer not found");
-                 if (userProfilePic) userProfilePic.src = currentUser.picture; else console.warn("#userProfilePic not found");
-                 if (userDisplayName) userDisplayName.textContent = currentUser.name; else console.warn("#userDisplayName not found");
-                 if (currentLogoutBtn) currentLogoutBtn.classList.remove('hidden'); else console.warn("#logoutBtn not found");
-             } else { // Skipped
-                 if (currentUserProfileContainer) currentUserProfileContainer.classList.add('hidden');
+        
+        function updateProfileDisplay() {
+             if (!document.body.classList.contains('state-logged-in') || !userProfileContainer) return; 
+             const currentLogoutBtn = document.getElementById('logoutBtn'); 
+             if (currentUser) {
+                 if (userProfileContainer) userProfileContainer.classList.remove('hidden');
+                 if (userProfilePic) userProfilePic.src = currentUser.picture;
+                 if (userDisplayName) userDisplayName.textContent = currentUser.name;
+                 if (currentLogoutBtn) currentLogoutBtn.classList.remove('hidden');
+             } else {
+                 if (userProfileContainer) userProfileContainer.classList.add('hidden');
                  if (currentLogoutBtn) currentLogoutBtn.classList.add('hidden');
              }
         }
 
-        function updateViewStateOnLogout() { // Specific actions on logout/initial load
-                const currentMainAppView = document.getElementById('mainAppView');
-                const currentLoginView = document.getElementById('loginView');
-                const currentUserProfileContainer = document.getElementById('userProfileContainer');
+        function stopScanner() { clearInterval(autoRefreshInterval); isScannerRunning = false; if(pausePlayBtn) pausePlayBtn.textContent = "Play"; if(scannerStatusText) scannerStatusText.textContent = "(Status: Stopped)"; logToConsole("Scanner stopped.", "info"); if(opportunitiesContainerElement && document.body.classList.contains('state-logged-in')) opportunitiesContainerElement.innerHTML = `<div class="loading-card">Scanner Stopped.</div>`; }
 
-                if (currentMainAppView) currentMainAppView.style.display = 'none';
-                if (currentLoginView) currentLoginView.style.display = 'flex';
-                document.body.classList.add('state-logged-out'); document.body.classList.remove('state-logged-in', 'app-active');
-                document.title = "Login - Arbitrage Scanner";
-                if (currentUserProfileContainer) currentUserProfileContainer.classList.add('hidden');
-
-                if (isScannerRunning) stopScanner();
-                binanceApiKey = ''; binanceApiSecret = ''; binanceApiConnected = false; bybitApiKey = ''; bybitApiSecret = ''; bybitApiConnected = false;
-                // Don't try to update UI elements that are now hidden
-                // updateApiStatusUI(); checkAutoTradeStatus();
-                 if(arbTableBody) arbTableBody.innerHTML = `<tr><td colspan="9" class="loading-message">Please log in or skip.</td></tr>`;
+        function updateViewStateOnLogout() {
+            const currentMainAppView = document.getElementById('mainAppView');
+            const currentLoginView = document.getElementById('loginView');
+            const currentUserProfileContainer = document.getElementById('userProfileContainer');
+            
+            if (currentMainAppView) currentMainAppView.style.display = 'none';
+            if (currentLoginView) currentLoginView.style.display = 'flex';
+            
+            document.body.classList.add('state-logged-out');
+            document.body.classList.remove('state-logged-in', 'app-active');
+            document.title = "Login - Arbitrage Scanner";
+            
+            if (currentUserProfileContainer) currentUserProfileContainer.classList.add('hidden');
+            
+            if (typeof stopScanner === 'function' && isScannerRunning) stopScanner(); 
+            
+            binanceApiKey = ''; binanceApiSecret = ''; binanceApiConnected = false; 
+            bybitApiKey = ''; bybitApiSecret = ''; bybitApiConnected = false;
+            
+            const initialOpportunitiesContainer = document.getElementById("arbCardContainer");
+            if (initialOpportunitiesContainer) {
+                initialOpportunitiesContainer.innerHTML = `<div class="loading-card">Please log in or skip to continue.</div>`;
+            }
         }
 
-        // --- User Authentication Logic ---
-        function handleCredentialResponse(response) {
-            const payload = parseJwt(response.credential); if (!payload) return; console.log("User signed in:", payload);
-            currentUser = { id: payload.sub, email: payload.email, name: payload.name, picture: payload.picture, token: response.credential };
-            document.body.classList.add('app-active');
-            initializeAppView(); // Initialize the main view
-            logToConsole("User signed in: " + currentUser.email, "success");
+        function initializeAppView() {
+            console.log("Initializing App View...");
+            mainAppView = document.getElementById('mainAppView'); 
+            loginView = document.getElementById('loginView');
+            if (!mainAppView || !loginView) { console.error("Core view elements not found!"); return; }
+
+            opportunitiesContainerElement = document.getElementById("arbCardContainer"); 
+            toggleApiBtn = document.getElementById("toggleApiSettings"); 
+            apiForm = document.getElementById("apiForm"); 
+            binanceApiKeyInput = document.getElementById("binanceApiKey"); 
+            binanceApiSecretInput = document.getElementById("binanceApiSecret"); 
+            binanceTestModeCheckbox = document.getElementById("binanceTestMode"); 
+            connectBinanceApiBtn = document.getElementById("connectBinanceApi"); 
+            disconnectBinanceApiBtn = document.getElementById("disconnectBinanceApi"); 
+            binanceApiStatusIndicator = document.getElementById("binanceApiStatusIndicator"); 
+            binanceApiStatusText = document.getElementById("binanceApiStatusText"); 
+            bybitApiKeyInput = document.getElementById("bybitApiKey"); 
+            bybitApiSecretInput = document.getElementById("bybitApiSecret"); 
+            bybitTestModeCheckbox = document.getElementById("bybitTestMode"); 
+            connectBybitApiBtn = document.getElementById("connectBybitApi"); 
+            disconnectBybitApiBtn = document.getElementById("disconnectBybitApi"); 
+            bybitApiStatusIndicator = document.getElementById("bybitApiStatusIndicator"); 
+            bybitApiStatusText = document.getElementById("bybitApiStatusText"); 
+            logEntriesContainer = document.getElementById("logEntries"); 
+            confirmModal = document.getElementById("confirmModal"); 
+            confirmModalBody = document.getElementById("confirmModalBody"); 
+            closeConfirmModalBtn = document.getElementById("closeConfirmModalBtn"); 
+            cancelTradeBtn = document.getElementById("cancelTradeBtn"); 
+            confirmTradeBtn = document.getElementById("confirmTradeBtn"); 
+            pausePlayBtn = document.getElementById("pausePlayBtn"); 
+            scannerStatusText = document.getElementById("scannerStatusText"); 
+            userProfileContainer = document.getElementById('userProfileContainer'); 
+            userProfilePic = document.getElementById('userProfilePic'); 
+            userDisplayName = document.getElementById('userDisplayName'); 
+            logoutBtn = document.getElementById('logoutBtn');
+            openSettingsModalBtn = document.getElementById('openSettingsModalBtn');
+            settingsModal = document.getElementById('settingsModal');
+            closeSettingsModalBtn = document.getElementById('closeSettingsModalBtn');
+            applySettingsBtn = document.getElementById('applySettingsBtn');
+            downloadLogBtn = document.getElementById('downloadLogBtn');
+            exchangeSelectionContainer = document.getElementById('exchangeSelectionContainer');
+            refreshRateInput = document.getElementById("refreshRate"); 
+            tradeAmountInput = document.getElementById("tradeAmount"); 
+            filterProfitableCheckbox = document.getElementById("filterProfitable"); 
+            minProfitPercentInput = document.getElementById("minProfitPercent"); 
+            maxProfitPercentInput = document.getElementById("maxProfitPercent"); 
+            autoTradeCheckbox = document.getElementById("autoTrade");
+
+            mainAppView.style.display = 'block'; 
+            loginView.style.display = 'none';
+            document.body.classList.add('state-logged-in'); 
+            document.body.classList.remove('state-logged-out');
+            document.title = "Arbitrage Scanner & Trader";
+
+            if (logoutBtn) logoutBtn.addEventListener("click", handleLogout);
+            if (toggleApiBtn) toggleApiBtn.addEventListener("click", toggleApiSettings);
+            if (connectBinanceApiBtn) connectBinanceApiBtn.addEventListener("click", connectBinanceApi);
+            if (disconnectBinanceApiBtn) disconnectBinanceApiBtn.addEventListener("click", disconnectBinanceApi);
+            if (connectBybitApiBtn) connectBybitApiBtn.addEventListener("click", connectBybitApi);
+            if (disconnectBybitApiBtn) disconnectBybitApiBtn.addEventListener("click", disconnectBybitApi);
+            if (confirmTradeBtn) confirmTradeBtn.addEventListener("click", confirmTrade);
+            if (cancelTradeBtn) cancelTradeBtn.addEventListener("click", () => closeModalWindow(confirmModal));
+            if (closeConfirmModalBtn) closeConfirmModalBtn.addEventListener("click", () => closeModalWindow(confirmModal));
+            if (pausePlayBtn) pausePlayBtn.addEventListener("click", toggleScanner);
+            if (openSettingsModalBtn) openSettingsModalBtn.addEventListener("click", openSettingsModal);
+            if (closeSettingsModalBtn) closeSettingsModalBtn.addEventListener("click", () => closeModalWindow(settingsModal));
+            if (applySettingsBtn) applySettingsBtn.addEventListener("click", applyAllSettingsFromModal);
+            if (downloadLogBtn) downloadLogBtn.addEventListener("click", downloadTradeLog);
+            window.addEventListener("click", (event) => { if (event.target === confirmModal) closeModalWindow(confirmModal); if (event.target === settingsModal) closeModalWindow(settingsModal);});
+            if (binanceTestModeCheckbox) binanceTestModeCheckbox.addEventListener('change', () => { if (!binanceApiConnected) saveUserSetting('binanceTestModeDefault', binanceTestModeCheckbox.checked); else { binanceTestMode = binanceTestModeCheckbox.checked; updateApiStatusUI(); logToConsole(`Binance mode set to ${binanceTestMode ? 'Test' : 'Live'}.`, 'info'); } });
+            if (bybitTestModeCheckbox) bybitTestModeCheckbox.addEventListener('change', () => { if (!bybitApiConnected) saveUserSetting('bybitTestModeDefault', bybitTestModeCheckbox.checked); else { bybitTestMode = bybitTestModeCheckbox.checked; updateApiStatusUI(); logToConsole(`Bybit mode set to ${bybitTestMode ? 'Test' : 'Live'}.`, 'info'); } });
+            
+            populateExchangeSelection(); 
+            updateProfileDisplay(); 
+            loadAllSettings(); 
+            startAutoRefresh(); 
         }
+
+        function handleCredentialResponse(response) { const payload = parseJwt(response.credential); if (!payload) return; console.log("User signed in:", payload); currentUser = { id: payload.sub, email: payload.email, name: payload.name, picture: payload.picture, token: response.credential }; document.body.classList.add('app-active'); initializeAppView(); logToConsole("User signed in: " + currentUser.email, "success"); }
         function parseJwt(token) { try { const b = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'); const j = decodeURIComponent(atob(b).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')); return JSON.parse(j); } catch (e) { console.error("JWT Error:", e); logToConsole("Login token error.", "error"); return null; } }
-        function handleLogout() {
-            const email = currentUser?.email; currentUser = null;
-            if (window.google?.accounts?.id) google.accounts.id.disableAutoSelect();
-            logToConsole("User logged out" + (email ? `: ${email}` : ''), "info");
-            updateViewStateOnLogout(); // Switch back to login view and clean up state
-        }
-        function handleSkipLogin() {
-            console.log("User skipped login."); currentUser = null; document.body.classList.add('app-active');
-            initializeAppView(); // Initialize the main view
-            logToConsole("Continued without login. Settings/API keys will not be saved to account.", "info");
-        }
-        function saveUserSetting(key, value) { if (currentUser) { saveSetting(USER_STORAGE_PREFIX + currentUser.id + '_' + key, value); } else { console.log("Skip login: Setting", key, "not saved to account."); /* Optional: saveSetting(key, value); */ } }
+        function handleLogout() { const email = currentUser?.email; currentUser = null; if (window.google?.accounts?.id) google.accounts.id.disableAutoSelect(); logToConsole("User logged out" + (email ? `: ${email}` : ''), "info"); updateViewStateOnLogout(); }
+        function handleSkipLogin() { console.log("User skipped login."); currentUser = null; document.body.classList.add('app-active'); initializeAppView(); logToConsole("Continued without login. Settings/API keys will not be saved to account.", "info"); }
+        function saveUserSetting(key, value) { if (currentUser) { saveSetting(USER_STORAGE_PREFIX + currentUser.id + '_' + key, value); } else { console.log("Skip login: Setting", key, "not saved to account."); } }
         function loadUserSetting(key, defaultValue) { const uk = currentUser ? USER_STORAGE_PREFIX + currentUser.id + '_' + key : key; const uv = currentUser ? loadSetting(uk, null) : null; return uv !== null ? uv : loadSetting(key, defaultValue); }
+        
+        function openSettingsModal() { if (settingsModal) settingsModal.style.display = 'flex'; }
+        function closeModalWindow(modalElement) { if (modalElement) modalElement.style.display = "none"; if (modalElement === confirmModal && isTradeExecuting && pendingTradeOp) { logToConsole(`Trade ID ${pendingTradeOp.id} cancelled by user.`, "warn"); resetTradeState(); } }
+        
+        function populateExchangeSelection() {
+            if (!exchangeSelectionContainer) { console.error("exchangeSelectionContainer not found for population"); return; }
+            exchangeSelectionContainer.innerHTML = '';
+            Object.keys(API_CONFIG).forEach(exchangeName => {
+                const label = document.createElement('label');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox'; checkbox.value = exchangeName;
+                checkbox.id = `select-exchange-${exchangeName.toLowerCase().replace(/[^a-z0-9]/gi, '')}`;
+                checkbox.checked = selectedExchanges.includes(exchangeName);
+                checkbox.addEventListener('change', handleExchangeSelectionChange);
+                label.appendChild(checkbox); label.appendChild(document.createTextNode(` ${exchangeName}`));
+                label.htmlFor = checkbox.id;
+                exchangeSelectionContainer.appendChild(label);
+            });
+        }
+        function handleExchangeSelectionChange(event) {
+            const exchangeName = event.target.value;
+            if (event.target.checked) { if (!selectedExchanges.includes(exchangeName)) selectedExchanges.push(exchangeName); } 
+            else { selectedExchanges = selectedExchanges.filter(ex => ex !== exchangeName); }
+        }
+        function applyAllSettingsFromModal() {
+            currentRefreshRate = parseInt(refreshRateInput.value, 10) || 5;
+            saveUserSetting('refreshRate', currentRefreshRate);
+            saveUserSetting('tradeAmount', tradeAmountInput.value);
+            saveUserSetting('filterProfitable', filterProfitableCheckbox.checked);
+            saveUserSetting('minProfitPercent', minProfitPercentInput.value);
+            saveUserSetting('maxProfitPercent', maxProfitPercentInput.value);
+            saveUserSetting('autoTrade', autoTradeCheckbox.checked);
+            saveUserSetting('selectedExchanges', selectedExchanges);
+            logToConsole("Settings applied. Restarting scanner...", "info");
+            closeModalWindow(settingsModal);
+            if (isScannerRunning) { stopScanner(); startAutoRefresh(); } 
+            else { fetchAndDisplayData(); }
+        }
+        function downloadTradeLog() {
+            if (!logEntriesContainer) return; const entries = Array.from(logEntriesContainer.children);
+            if (entries.length === 0) { alert("Log is empty."); return; }
+            let csvContent = "Timestamp,Type,Message\n";
+            entries.reverse().forEach(entry => { const timeSpan = entry.querySelector(".log-time"); const msgSpan = entry.querySelector("span:not(.log-time)"); if (timeSpan && msgSpan) { const timestamp = timeSpan.textContent.replace(/[\[\]]/g, ''); const type = msgSpan.className.replace('log-', ''); const message = msgSpan.textContent.trim().replace(/"/g, '""'); csvContent += `"${timestamp}","${type}","${message}"\n`; } });
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' }); const link = document.createElement("a");
+            if (link.download !== undefined) { const url = URL.createObjectURL(blob); link.setAttribute("href", url); link.setAttribute("download", `arbitrage_scanner_log_${new Date().toISOString().slice(0,10)}.csv`); link.style.visibility = 'hidden'; document.body.appendChild(link); link.click(); document.body.removeChild(link); URL.revokeObjectURL(url); } else { alert("Browser does not support automatic download."); }
+        }
 
-        // --- Settings Management & Scanner Core ---
-        // (Functions loadAllSettings, applySettings, stopScanner, toggleScanner, startAutoRefresh, fetchAndDisplayData, findTriangularArbitrage, renderTable, API connect/disconnect, Trade functions, logToConsole, closeModal, resetTradeState etc. remain largely the same as the previous correct version, relying on elements cached in initializeAppView and checking for state like isScannerRunning or document.body.classList.contains('state-logged-in'))
-         function loadAllSettings() {
-            if (!document.body.classList.contains('state-logged-in')) { console.log("Skipping settings load: App view not active."); return; }
-            console.log("Loading settings for:", currentUser ? currentUser.email : "Guest (Skipped Login)");
+        function loadAllSettings() {
+            if (!document.body.classList.contains('state-logged-in')) { return; }
             if (!refreshRateInput) { console.warn("Settings elements not ready, skipping load."); return; }
-            refreshRateInput.value = loadUserSetting('refreshRate', 5); currentRefreshRate = parseInt(refreshRateInput.value, 10) || 5;
+            refreshRateInput.value = loadUserSetting('refreshRate', 5);
+            currentRefreshRate = parseInt(refreshRateInput.value, 10) || 5;
             tradeAmountInput.value = loadUserSetting('tradeAmount', 10);
             minProfitPercentInput.value = loadUserSetting('minProfitPercent', 0.05);
             maxProfitPercentInput.value = loadUserSetting('maxProfitPercent', 50);
             filterProfitableCheckbox.checked = loadUserSetting('filterProfitable', true);
+            autoTradeCheckbox.checked = loadUserSetting('autoTrade', false);
+            const savedExchanges = loadUserSetting('selectedExchanges', ['Binance', 'Bybit', 'KuCoin', 'OKX']);
+            selectedExchanges = Array.isArray(savedExchanges) ? savedExchanges : ['Binance', 'Bybit'];
+            populateExchangeSelection();
             binanceApiConnected = false; bybitApiConnected = false;
             const binanceKey = loadUserSetting('binanceApiKey', ''); const binanceSecret = loadUserSetting('binanceApiSecret', ''); const binanceTest = loadUserSetting('binanceTestMode', true);
             if (currentUser && binanceKey && binanceSecret) { binanceApiKey = binanceKey; binanceApiSecret = binanceSecret; binanceTestMode = binanceTest; binanceApiConnected = true; logToConsole("Loaded Binance API credentials from account", "info"); } else { binanceApiKey = ''; binanceApiSecret = ''; binanceTestMode = loadUserSetting('binanceTestModeDefault', true); }
-            if(binanceTestModeCheckbox) binanceTestModeCheckbox.checked = binanceTestMode; else console.warn("binanceTestModeCheckbox missing");
+            if(binanceTestModeCheckbox) binanceTestModeCheckbox.checked = binanceTestMode;
             const bybitKey = loadUserSetting('bybitApiKey', ''); const bybitSecret = loadUserSetting('bybitApiSecret', ''); const bybitTest = loadUserSetting('bybitTestMode', true);
             if (currentUser && bybitKey && bybitSecret) { bybitApiKey = bybitKey; bybitApiSecret = bybitSecret; bybitTestMode = bybitTest; bybitApiConnected = true; logToConsole("Loaded Bybit API credentials from account", "info"); } else { bybitApiKey = ''; bybitApiSecret = ''; bybitTestMode = loadUserSetting('bybitTestModeDefault', true); }
-            if(bybitTestModeCheckbox) bybitTestModeCheckbox.checked = bybitTestMode; else console.warn("bybitTestModeCheckbox missing");
-            updateApiStatusUI(); checkAutoTradeStatus(); enableTradingButtons(); console.log("Settings loaded.");
+            if(bybitTestModeCheckbox) bybitTestModeCheckbox.checked = bybitTestMode;
+            updateApiStatusUI(); checkAutoTradeStatus(); enableTradingButtons(); 
+            console.log("Settings loaded.");
         }
-        function applySettings() {
-             if (!refreshRateInput || !document.body.classList.contains('state-logged-in')) return;
-            const newRate = parseInt(refreshRateInput.value, 10) || 5; if (newRate < 2) { alert("Refresh rate must be >= 2s."); refreshRateInput.value = currentRefreshRate; return; }
-            currentRefreshRate = newRate; saveUserSetting('refreshRate', currentRefreshRate);
-            logToConsole(`Refresh rate set to ${currentRefreshRate}s. Restarting...`, "info");
-            if (isScannerRunning) startAutoRefresh();
-        }
-        function stopScanner() { clearInterval(autoRefreshInterval); isScannerRunning = false; if(pausePlayBtn) pausePlayBtn.textContent = "Play"; if(scannerStatusText) scannerStatusText.textContent = "(Status: Stopped)"; logToConsole("Scanner stopped.", "info"); if(arbTableBody) arbTableBody.innerHTML = `<tr><td colspan="9" class="loading-message">Scanner Stopped.</td></tr>`; }
+        
         function toggleScanner() { if (!document.body.classList.contains('state-logged-in')) { logToConsole("Please log in or skip to use the scanner.", "warn"); return; } if (isScannerRunning) { stopScanner(); } else { logToConsole("Scanner started/resumed.", "info"); startAutoRefresh(); } }
         function startAutoRefresh() {
             if (!document.body.classList.contains('state-logged-in')) return;
@@ -261,46 +482,40 @@
             if(pausePlayBtn) pausePlayBtn.textContent = "Pause"; if(scannerStatusText) scannerStatusText.textContent = "(Status: Running)";
             fetchAndDisplayData(); autoRefreshInterval = setInterval(fetchAndDisplayData, interval); console.log(`Auto-refresh started: ${currentRefreshRate}s`);
         }
-         async function fetchAndDisplayData() { /* ... Function unchanged ... */
-             if (!isScannerRunning || isTradeExecuting) { if (!isScannerRunning && arbTableBody && !arbTableBody.querySelector('.loading-message')?.textContent.includes('Stopped')) { arbTableBody.innerHTML = `<tr><td colspan="9" class="loading-message">Scanner Stopped.</td></tr>`; } return; }
-            if (!arbTableBody || !tradeAmountInput || !filterProfitableCheckbox || !minProfitPercentInput || !maxProfitPercentInput || !autoTradeCheckbox) { console.error("DOM elements missing in fetch."); logToConsole("Internal UI error.", "error"); stopScanner(); return; }
-            if (!arbTableBody.querySelector('.loading-message')?.textContent.startsWith('Fetching')) arbTableBody.innerHTML = `<tr><td colspan="9" class="loading-message">Fetching latest prices...</td></tr>`;
-            const tradeAmt = parseFloat(tradeAmountInput.value) || 10; const filterProfitable = filterProfitableCheckbox.checked; const minProfit = parseFloat(minProfitPercentInput.value) || 0; const maxProfit = parseFloat(maxProfitPercentInput.value) || 50; const autoTrade = autoTradeCheckbox.checked;
-            try { const [binanceRes, bybitRes] = await Promise.allSettled([ fetch(`${BINANCE_PUBLIC_API_URL}/ticker/bookTicker`), fetch(`${BYBIT_PUBLIC_API_URL}/v5/market/tickers?category=spot`) ]); let allOps = []; /* Process results */ if (binanceRes.status === 'fulfilled' && binanceRes.value.ok) { const data = await binanceRes.value.json(); if (Array.isArray(data)) { const map = data.reduce((m, t) => { const b = parseFloat(t.bidPrice), a = parseFloat(t.askPrice); if (t.symbol && b > 0 && a > 0) m[t.symbol] = { bidPrice: b, askPrice: a }; return m; }, {}); if (map['BTCUSDT']) { const ops = findTriangularArbitrage(map, "USDT", tradeAmt); ops.forEach(op => { op.exchange = 'Binance'; op.id = `BIN_${op.path.join('_')}_${Date.now()}`; }); allOps.push(...ops); } else logToConsole("Binance USDT pairs not found.", "warn"); } else logToConsole(`Unexpected Binance format`, "error"); } else logToConsole(`Fetch Binance failed: ${binanceRes.reason || binanceRes.value?.statusText || 'Error'}`, "error"); if (bybitRes.status === 'fulfilled' && bybitRes.value.ok) { const data = await bybitRes.value.json(); if (data.retCode === 0 && Array.isArray(data.result?.list)) { const map = data.result.list.reduce((m, t) => { const b = parseFloat(t.bid1Price), a = parseFloat(t.ask1Price); if (t.symbol && b > 0 && a > 0) m[t.symbol] = { bidPrice: b, askPrice: a }; return m; }, {}); if (map['BTCUSDT']) { const ops = findTriangularArbitrage(map, "USDT", tradeAmt); ops.forEach(op => { op.exchange = 'Bybit'; op.id = `BYB_${op.path.join('_')}_${Date.now()}`; }); allOps.push(...ops); } else logToConsole("Bybit USDT pairs not found.", "warn"); } else logToConsole(`Bybit API error: ${data.retMsg || 'Error'} (${data.retCode})`, "error"); } else logToConsole(`Fetch Bybit failed: ${bybitRes.reason || bybitRes.value?.statusText || 'Error'}`, "error"); const filtered = allOps.filter(op => op.profitPercent <= maxProfit && op.profitPercent >= minProfit && (!filterProfitable || op.profit > 0)); const sorted = filtered.sort((a, b) => b.profitPercent - a.profitPercent); currentArbitrageOpportunities = sorted; /* Auto trade logic */ if (isScannerRunning && autoTrade && !isTradeExecuting && sorted.length > 0) { const topOp = sorted[0]; const isConnected = (topOp.exchange === 'Binance' && binanceApiConnected) || (topOp.exchange === 'Bybit' && bybitApiConnected); const isTest = (topOp.exchange === 'Binance' && binanceTestMode) || (topOp.exchange === 'Bybit' && bybitTestMode); if (isConnected && topOp.profitPercent >= AUTO_TRADE_MIN_PROFIT_PERCENT) { logToConsole(`Auto-Trade Triggered (${topOp.exchange} ${isTest ? 'Test':'Live'}): ${topOp.path.join('->')} (${topOp.profitPercent.toFixed(4)}% >= ${AUTO_TRADE_MIN_PROFIT_PERCENT}%). Executing...`, "info"); executeTrade(0, true); } } if (isScannerRunning) renderTable(sorted, minProfit); } catch (err) { console.error("Fetch/process error:", err); logToConsole(`Error: ${err.message}`, "error"); if (isScannerRunning && arbTableBody) arbTableBody.innerHTML = `<tr><td colspan="9" class="loading-message error-value">Error: ${err.message}. Retrying...</td></tr>`; }
-        }
-        function findTriangularArbitrage(tickerMap, baseCoin, startAmount) { /* ... Function unchanged ... */
-            const opportunities = []; const symbols = Object.keys(tickerMap); function logAnomaly(details) { console.warn('Calc Anomaly:', details); } for (const pair1 of symbols) { let coinA, trade1Rate; if (pair1.endsWith(baseCoin)) { const pA = pair1.substring(0, pair1.length - baseCoin.length); if (!pA || pA === baseCoin) continue; trade1Rate = tickerMap[pair1]?.askPrice; if (!trade1Rate || trade1Rate <= 0) continue; coinA = pA; } else { continue; } const amtA = startAmount / trade1Rate; if (!Number.isFinite(amtA) || amtA <= 0) continue; for (const pair2 of symbols) { let coinB, pair2Used=pair2, price2Desc, rate2, isBuy2, amtB; if (pair2.endsWith(coinA)) { const pB = pair2.substring(0, pair2.length - coinA.length); if (!pB || pB === baseCoin || pB === coinA) continue; const ask2 = tickerMap[pair2]?.askPrice; if (!ask2 || ask2 <= 0) continue; amtB = amtA / ask2; coinB = pB; price2Desc=ask2; rate2=1/ask2; isBuy2=true; } else if (pair2.startsWith(coinA)) { const pB = pair2.substring(coinA.length); if (!pB || pB === baseCoin || pB === coinA) continue; const bid2 = tickerMap[pair2]?.bidPrice; if (!bid2 || bid2 <= 0) continue; amtB = amtA * bid2; coinB = pB; price2Desc=bid2; rate2=bid2; isBuy2=false; } else { continue; } if (!coinB || !Number.isFinite(amtB) || amtB <= 0) continue; let pair3, pair3Used, price3Desc, rate3, isSell3=false, finalAmt; const pair3C1 = coinB+baseCoin; if (tickerMap[pair3C1]) { const bid3 = tickerMap[pair3C1]?.bidPrice; if (bid3 && bid3 > 0) { finalAmt = amtB*bid3; pair3=pair3C1; pair3Used=pair3; price3Desc=bid3; rate3=bid3; isSell3=true; } } const pair3C2 = baseCoin+coinB; if (!isSell3 && tickerMap[pair3C2]) { const ask3 = tickerMap[pair3C2]?.askPrice; if (ask3 && ask3 > 0) { finalAmt = amtB/ask3; pair3=pair3C2; pair3Used=pair3; price3Desc=ask3; rate3=1/ask3; isSell3=true; } } if (!isSell3 || !Number.isFinite(finalAmt) || finalAmt <= 0) continue; const profit = finalAmt-startAmount; const profitPercent = startAmount>0?(profit/startAmount)*100:0; if(!Number.isFinite(profit)||!Number.isFinite(profitPercent)) { logAnomaly({ event:"Result NaN/Inf", path:[pair1,pair2Used,pair3Used],profit,profitPercent }); continue; } if(Math.abs(profitPercent)>EXTREME_PROFIT_THRESHOLD) { logAnomaly({ event:"Extreme Profit %", path:[pair1,pair2Used,pair3Used],profitPercent }); } const s1=`Buy ${coinA} w/ ${baseCoin} @ ${trade1Rate.toPrecision(6)} (${pair1})`; const s2=isBuy2?`Buy ${coinB} w/ ${coinA} @ ${price2Desc.toPrecision(6)} (${pair2Used})`:`Sell ${coinA} for ${coinB} @ ${price2Desc.toPrecision(6)} (${pair2Used})`; const s3=(pair3===pair3C1)?`Sell ${coinB} for ${baseCoin} @ ${price3Desc.toPrecision(6)} (${pair3Used})`:`Buy ${baseCoin} w/ ${coinB} @ ${price3Desc.toPrecision(6)} (${pair3Used})`; opportunities.push({ steps:[s1, s2, s3], path:[pair1,pair2Used,pair3Used], coins:[baseCoin,coinA,coinB], amount:startAmount, profit:profit, profitPercent:profitPercent, base:baseCoin, rates:[trade1Rate,price2Desc,price3Desc], amounts:[startAmount,amtA,amtB,finalAmt], actions:['BUY', isBuy2?'BUY':'SELL', 'SELL'] }); } } return opportunities;
-        }
-        function renderTable(opportunities, minProfitPercent) { /* ... Function unchanged ... */
-             if (!arbTableBody || !document.body.classList.contains('state-logged-in')) return; arbTableBody.innerHTML = ""; if (opportunities.length === 0) { let msg = "No arbitrage opportunities found."; if (filterProfitableCheckbox?.checked) msg += " Showing only profitable."; if (minProfitPercentInput && parseFloat(minProfitPercentInput.value) > 0) msg += ` Min Profit: ${minProfitPercentInput.value}%.`; if (maxProfitPercentInput && parseFloat(maxProfitPercentInput.value) < EXTREME_PROFIT_THRESHOLD) msg += ` Max Profit: ${maxProfitPercentInput.value}%.`; arbTableBody.innerHTML = `<tr><td colspan="9" class="loading-message">${msg}</td></tr>`; return; } opportunities.forEach((op, idx) => { const row = arbTableBody.insertRow(); row.dataset.opportunityIndex = idx; const currentMinProfit = minProfitPercentInput ? parseFloat(minProfitPercentInput.value) : 0; if (idx === 0 && op.profitPercent >= currentMinProfit) row.classList.add("highlight"); row.insertCell().textContent = op.exchange; row.insertCell().textContent = op.steps[0]; row.insertCell().textContent = op.steps[1]; row.insertCell().textContent = op.steps[2]; row.insertCell().textContent = op.base; row.insertCell().textContent = `${op.amount.toFixed(op.amount < 1 ? 4 : 2)} ${op.base}`; const profitCell = row.insertCell(); profitCell.textContent = `${op.profit.toFixed(op.profit < 1 && op.profit > -1 ? 6 : 4)} ${op.base}`; profitCell.className = op.profit >= 0 ? "profit" : "loss"; if (Math.abs(op.profitPercent) > EXTREME_PROFIT_THRESHOLD / 5) profitCell.classList.add('error-value'); const profitPercentCell = row.insertCell(); profitPercentCell.textContent = `${op.profitPercent.toFixed(4)}%`; profitPercentCell.className = op.profit >= 0 ? "profit" : "loss"; if (Math.abs(op.profitPercent) > EXTREME_PROFIT_THRESHOLD / 5) profitPercentCell.classList.add('error-value'); const actionCell = row.insertCell(); actionCell.className = "trade-actions"; const isConnected = (op.exchange === 'Binance' && binanceApiConnected) || (op.exchange === 'Bybit' && bybitApiConnected); if (op.profitPercent >= currentMinProfit) { const btn = document.createElement("button"); btn.textContent = "Trade"; btn.className = "trade-btn"; btn.disabled = !isConnected || isTradeExecuting; btn.title = isConnected ? `Execute ${op.path.join('->')} on ${op.exchange}` : `Connect ${op.exchange} API to trade`; if (isTradeExecuting) btn.title = "Trade in progress..."; btn.onclick = (i => () => executeTrade(i, false))(idx); actionCell.appendChild(btn); } else { actionCell.textContent = "-"; } });
-        }
-        function toggleApiSettings() { if(apiForm && document.body.classList.contains('state-logged-in')) apiForm.classList.toggle("hidden"); if(toggleApiBtn && document.body.classList.contains('state-logged-in')) toggleApiBtn.textContent = apiForm?.classList.contains("hidden") ? "Show API Settings" : "Hide API Settings"; }
-        function connectBinanceApi() { /* ... Function unchanged ... */ if (!binanceApiKeyInput || !binanceApiSecretInput || !binanceTestModeCheckbox || !document.body.classList.contains('state-logged-in')) return; const key = binanceApiKeyInput.value.trim(), secret = binanceApiSecretInput.value.trim(), test = binanceTestModeCheckbox.checked; if (!key || !secret) { alert("Binance Key & Secret required."); return; } binanceApiKey = key; binanceApiSecret = secret; binanceTestMode = test; binanceApiConnected = true; updateApiStatusUI(); logToConsole(`Binance Connected ${test ? "(Test)" : "(Live)"}.`, "success"); checkAutoTradeStatus(); enableTradingButtons(); saveUserSetting('binanceApiKey', key); saveUserSetting('binanceApiSecret', secret); saveUserSetting('binanceTestMode', test); if (currentUser) logToConsole("Binance credentials potentially saved.", "info"); binanceApiKeyInput.value = ''; binanceApiSecretInput.value = ''; }
-        function disconnectBinanceApi() { /* ... Function unchanged ... */ if (!document.body.classList.contains('state-logged-in')) return; binanceApiKey = ''; binanceApiSecret = ''; binanceApiConnected = false; updateApiStatusUI(); logToConsole("Binance Disconnected.", "info"); checkAutoTradeStatus(); enableTradingButtons(); saveUserSetting('binanceApiKey', ''); saveUserSetting('binanceApiSecret', ''); if (currentUser) logToConsole("Cleared saved Binance credentials.", "info"); localStorage.removeItem("binanceApiKeyHint"); }
-        function connectBybitApi() { /* ... Function unchanged ... */ if (!bybitApiKeyInput || !bybitApiSecretInput || !bybitTestModeCheckbox || !document.body.classList.contains('state-logged-in')) return; const key = bybitApiKeyInput.value.trim(), secret = bybitApiSecretInput.value.trim(), test = bybitTestModeCheckbox.checked; if (!key || !secret) { alert("Bybit Key & Secret required."); return; } bybitApiKey = key; bybitApiSecret = secret; bybitTestMode = test; bybitApiConnected = true; updateApiStatusUI(); logToConsole(`Bybit Connected ${test ? "(Test)" : "(Live)"}.`, "success"); checkAutoTradeStatus(); enableTradingButtons(); saveUserSetting('bybitApiKey', key); saveUserSetting('bybitApiSecret', secret); saveUserSetting('bybitTestMode', test); if (currentUser) logToConsole("Bybit credentials potentially saved.", "info"); bybitApiKeyInput.value = ''; bybitApiSecretInput.value = ''; }
-        function disconnectBybitApi() { /* ... Function unchanged ... */ if (!document.body.classList.contains('state-logged-in')) return; bybitApiKey = ''; bybitApiSecret = ''; bybitApiConnected = false; updateApiStatusUI(); logToConsole("Bybit Disconnected.", "info"); checkAutoTradeStatus(); enableTradingButtons(); saveUserSetting('bybitApiKey', ''); saveUserSetting('bybitApiSecret', ''); if (currentUser) logToConsole("Cleared saved Bybit credentials.", "info"); localStorage.removeItem("bybitApiKeyHint"); }
-        function updateApiStatusUI() { /* ... Function unchanged ... */ if (!document.body.classList.contains('state-logged-in')) return; const binHint = !currentUser && loadSetting("binanceApiKeyHint") ? ` (Hint: ${loadSetting("binanceApiKeyHint")})` : ''; const bybHint = !currentUser && loadSetting("bybitApiKeyHint") ? ` (Hint: ${loadSetting("bybitApiKeyHint")})` : ''; if(binanceApiStatusIndicator && binanceApiStatusText && connectBinanceApiBtn && disconnectBinanceApiBtn && binanceApiKeyInput && binanceApiSecretInput) { if (binanceApiConnected) { binanceApiStatusIndicator.className = "status-indicator status-connected"; binanceApiStatusText.textContent = `Binance Connected ${binanceTestMode ? "(Test)" : "(Live)"}`; connectBinanceApiBtn.classList.add("hidden"); disconnectBinanceApiBtn.classList.remove("hidden"); binanceApiKeyInput.placeholder = "Connected"; binanceApiSecretInput.placeholder = "Connected"; } else { binanceApiStatusIndicator.className = "status-indicator status-disconnected"; binanceApiStatusText.textContent = "Binance API Disconnected"; connectBinanceApiBtn.classList.remove("hidden"); disconnectBinanceApiBtn.classList.add("hidden"); binanceApiKeyInput.placeholder = `Enter Binance API Key${binHint}`; binanceApiSecretInput.placeholder = 'Enter Binance API Secret'; }} if(bybitApiStatusIndicator && bybitApiStatusText && connectBybitApiBtn && disconnectBybitApiBtn && bybitApiKeyInput && bybitApiSecretInput) { if (bybitApiConnected) { bybitApiStatusIndicator.className = "status-indicator status-connected"; bybitApiStatusText.textContent = `Bybit Connected ${bybitTestMode ? "(Test)" : "(Live)"}`; connectBybitApiBtn.classList.add("hidden"); disconnectBybitApiBtn.classList.remove("hidden"); bybitApiKeyInput.placeholder = "Connected"; bybitApiSecretInput.placeholder = "Connected"; } else { bybitApiStatusIndicator.className = "status-indicator status-disconnected"; bybitApiStatusText.textContent = "Bybit API Disconnected"; connectBybitApiBtn.classList.remove("hidden"); disconnectBybitApiBtn.classList.add("hidden"); bybitApiKeyInput.placeholder = `Enter Bybit API Key${bybHint}`; bybitApiSecretInput.placeholder = 'Enter Bybit API Secret'; }} checkAutoTradeStatus(); }
-        function checkAutoTradeStatus() { /* ... Function unchanged ... */ if (!autoTradeCheckbox || !document.body.classList.contains('state-logged-in')) return; const anyConnected = binanceApiConnected || bybitApiConnected; autoTradeCheckbox.disabled = !anyConnected; autoTradeCheckbox.title = anyConnected ? "Enable automatic trading of top opportunity" : "Connect API to enable Auto-Trade"; if (!anyConnected) autoTradeCheckbox.checked = false; }
-        function enableTradingButtons() { /* ... Function unchanged ... */ if (!arbTableBody || !document.body.classList.contains('state-logged-in')) return; arbTableBody.querySelectorAll("tr").forEach(row => { const indexStr = row.dataset.opportunityIndex; if (indexStr === undefined || indexStr === null) return; const index = parseInt(indexStr, 10); if (isNaN(index) || index >= currentArbitrageOpportunities.length || index < 0) return; const op = currentArbitrageOpportunities[index]; if (!op) return; const tradeBtn = row.querySelector(".trade-btn"); if (tradeBtn) { const isConnected = (op.exchange === 'Binance' && binanceApiConnected) || (op.exchange === 'Bybit' && bybitApiConnected); tradeBtn.disabled = !isConnected || isTradeExecuting; if (isTradeExecuting) tradeBtn.title = "Trade in progress..."; else if (!isConnected) tradeBtn.title = `Connect ${op.exchange} API to trade`; else tradeBtn.title = `Execute ${op.path.join('->')} on ${op.exchange}`; } }); }
-        function disableTradingButtons() { /* ... Function unchanged ... */ if (!arbTableBody || !document.body.classList.contains('state-logged-in')) return; arbTableBody.querySelectorAll(".trade-btn").forEach(btn => { btn.disabled = true; btn.title = "Trade in progress..."; }); if (autoTradeCheckbox) { autoTradeCheckbox.disabled = true; autoTradeCheckbox.title = "Trade in progress..."; } }
-        function executeTrade(index, isAuto = false) { /* ... Function unchanged ... */ if (!document.body.classList.contains('state-logged-in') || !confirmModalBody) return; if (isTradeExecuting) { logToConsole("Trade already in progress.", "warn"); return; } if (index < 0 || index >= currentArbitrageOpportunities.length) { logToConsole(`Trade failed: Stale index (${index}). Refreshing...`, "error"); if(isScannerRunning) fetchAndDisplayData(); return; } const op = currentArbitrageOpportunities[index]; if (!op) { logToConsole("Trade failed: Opportunity data not found.", "error"); return; } const isConnected = (op.exchange === 'Binance' && binanceApiConnected) || (op.exchange === 'Bybit' && bybitApiConnected); if (!isConnected) { const msg = `API for ${op.exchange} not connected.`; if (!isAuto) alert(msg); logToConsole(`Trade aborted: ${msg}`, "warn"); return; } pendingTradeOp = op; isTradeExecuting = true; disableTradingButtons(); const profitClass = op.profit >= 0 ? 'profit' : 'loss'; const isTest = (op.exchange === 'Binance' && binanceTestMode) || (op.exchange === 'Bybit' && bybitTestMode); const warn = isTest ? `<p style="color: orange; font-weight: bold;">${op.exchange} TEST MODE ACTIVE.</p>` : `<p style="color: red; font-weight: bold;">🚨 WARNING: ${op.exchange} LIVE MODE ACTIVE! REAL TRADES! 🚨</p>`; confirmModalBody.innerHTML = `<p><strong>Exchange:</strong> ${op.exchange}</p><p><strong>Path:</strong></p><ol><li>${op.steps[0]}</li><li>${op.steps[1]}</li><li>${op.steps[2]}</li></ol><p><strong>Amount:</strong> ${op.amount.toFixed(4)} ${op.base}</p><p><strong>Expected Profit:</strong> <span class="${profitClass}">${op.profit.toFixed(6)} ${op.base} (${op.profitPercent.toFixed(4)}%)</span></p>${warn}<p><em>Note: Slippage may occur.</em></p>`; if (isAuto) { logToConsole(`Auto-confirming ${op.exchange} trade ID: ${op.id}.`, "info"); setTimeout(confirmTrade, 200); } else { confirmModal.style.display = "block"; } }
-        async function confirmTrade() { /* ... Function unchanged, relies on placeholders ... */ if (!document.body.classList.contains('state-logged-in')) return; if (!pendingTradeOp) { logToConsole("Confirm failed: No pending trade.", "error"); if(isTradeExecuting) resetTradeState(); closeModal(); return; } const op = pendingTradeOp; pendingTradeOp = null; const isConnected = (op.exchange === 'Binance' && binanceApiConnected) || (op.exchange === 'Bybit' && bybitApiConnected); if (!isConnected) { logToConsole(`Exec failed: ${op.exchange} API disconnected. ID: ${op.id}`, "error"); resetTradeState(); closeModal(); return; } closeModal(); logToConsole(`Confirmed ${op.exchange} Trade ID: ${op.id}. Path: ${op.path.join(" → ")}. Executing...`, "info"); const isTest = (op.exchange === 'Binance' && binanceTestMode) || (op.exchange === 'Bybit' && bybitTestMode); const modePrefix = isTest ? `[${op.exchange} Test]` : `[${op.exchange} Live]`; if (isTest) { logToConsole(`${modePrefix} Simulating Step 1: ${op.steps[0]}`, "info"); await new Promise(r=>setTimeout(r, 400+Math.random()*200)); logToConsole(`${modePrefix} Simulating Step 2: ${op.steps[1]}`, "info"); await new Promise(r=>setTimeout(r, 400+Math.random()*200)); logToConsole(`${modePrefix} Simulating Step 3: ${op.steps[2]}`, "info"); await new Promise(r=>setTimeout(r, 400+Math.random()*200)); logToConsole(`${modePrefix} Simulation Complete ID: ${op.id}. Exp. profit: ${op.profit.toFixed(6)} ${op.base}`, "success"); resetTradeState(); return; } try { logToConsole(`${modePrefix} --- STARTING LIVE EXECUTION --- ID: ${op.id}`, "warn"); if (op.exchange === 'Binance') { logToConsole(`${modePrefix} Executing Binance Step 1: ${op.steps[0]}`, "info"); await executeBinanceOrder_Placeholder(op.path[0], op.actions[0]); logToConsole(`${modePrefix} Binance Step 1 OK.`, "success"); logToConsole(`${modePrefix} Executing Binance Step 2: ${op.steps[1]}`, "info"); await executeBinanceOrder_Placeholder(op.path[1], op.actions[1]); logToConsole(`${modePrefix} Binance Step 2 OK.`, "success"); logToConsole(`${modePrefix} Executing Binance Step 3: ${op.steps[2]}`, "info"); await executeBinanceOrder_Placeholder(op.path[2], op.actions[2]); logToConsole(`${modePrefix} Binance Step 3 OK.`, "success"); } else if (op.exchange === 'Bybit') { logToConsole(`${modePrefix} Executing Bybit Step 1: ${op.steps[0]}`, "info"); await executeBybitOrder_Placeholder(op.path[0], op.actions[0]); logToConsole(`${modePrefix} Bybit Step 1 OK.`, "success"); logToConsole(`${modePrefix} Executing Bybit Step 2: ${op.steps[1]}`, "info"); await executeBybitOrder_Placeholder(op.path[1], op.actions[1]); logToConsole(`${modePrefix} Bybit Step 2 OK.`, "success"); logToConsole(`${modePrefix} Executing Bybit Step 3: ${op.steps[2]}`, "info"); await executeBybitOrder_Placeholder(op.path[2], op.actions[2]); logToConsole(`${modePrefix} Bybit Step 3 OK.`, "success"); } logToConsole(`${modePrefix} --- LIVE TRADE COMPLETED --- ID: ${op.id}. Verify on ${op.exchange}.`, "success"); } catch (error) { console.error(`${modePrefix} Trade Error:`, error); logToConsole(`${modePrefix} Trade Failed ID: ${op.id}. Reason: ${error.message}. CHECK EXCHANGE!`, "error"); } finally { resetTradeState(); } }
-        async function executeBinanceOrder_Placeholder(symbol, side, qty=null) { /* ... Placeholder unchanged ... */ const m=binanceTestMode?"[Test]":"[Live]"; logToConsole(`[Binance ${m}] Placeholder: ${side} ${qty||'Qty'} ${symbol}`, 'info'); if(!binanceApiConnected) throw new Error("Binance disconnected"); await new Promise(r=>setTimeout(r, 500+Math.random()*300)); if(Math.random()<0.03&&!binanceTestMode) throw new Error(`Simulated Binance ${m} Error`); logToConsole(`[Binance ${m}] Placeholder OK: ${side} ${symbol}`, 'success'); return {status:'FILLED', orderId:Date.now()};}
-        async function executeBybitOrder_Placeholder(symbol, side, qty=null) { /* ... Placeholder unchanged ... */ const m=bybitTestMode?"[Test]":"[Live]"; const s=side.toUpperCase()==='BUY'?'Buy':'Sell'; logToConsole(`[Bybit ${m}] Placeholder: ${s} ${qty||'Qty'} ${symbol}`, 'info'); if(!bybitApiConnected) throw new Error("Bybit disconnected"); await new Promise(r=>setTimeout(r, 500+Math.random()*300)); if(Math.random()<0.03&&!bybitTestMode) throw new Error(`Simulated Bybit ${m} Error`); logToConsole(`[Bybit ${m}] Placeholder OK: ${s} ${symbol}`, 'success'); return {retCode:0, result:{orderId:`sim_${Date.now()}`}};}
-        function resetTradeState() { pendingTradeOp = null; isTradeExecuting = false; console.log("Trade state reset."); if (document.body.classList.contains('state-logged-in')) { enableTradingButtons(); checkAutoTradeStatus(); } }
-        function logToConsole(message, type = "info") { const logContainer = document.getElementById("logEntries"); if (!logContainer) { console.log(`Log Skipped (${type}): ${message}`); return; } try { const time = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}); const entry = document.createElement("div"); entry.className = "log-entry"; const timeSpan = document.createElement("span"); timeSpan.className = "log-time"; timeSpan.textContent = `[${time}]`; const msgSpan = document.createElement("span"); const types = ["info","success","error","warn"]; msgSpan.className = `log-${types.includes(type)?type:'info'}`; msgSpan.textContent = ` ${message}`; entry.appendChild(timeSpan); entry.appendChild(msgSpan); logContainer.insertBefore(entry, logContainer.firstChild); while (logContainer.children.length > 200) logContainer.removeChild(logContainer.lastChild); } catch (e) { console.error("Log error:", e); } }
-        function closeModal() { if (confirmModal) confirmModal.style.display = "none"; if (isTradeExecuting && pendingTradeOp) { logToConsole(`Trade ID ${pendingTradeOp.id} cancelled by user.`, "warn"); resetTradeState(); } }
 
-        // --- Initialization ---
+        function standardizeSymbol(symbol, exchangeName) { if (!symbol) return null; let s = symbol.toUpperCase(); s = s.replace(/[-_:\/\s]/g, '');  if (exchangeName === 'Kraken') { if (s.startsWith('XBT')) s = s.replace('XBT', 'BTC'); else if (s.startsWith('XDG')) s = s.replace('XDG', 'DOGE'); else if (s.startsWith('XETH')) s = s.replace('XETH', 'ETH'); else if (s.startsWith('XLTC')) s = s.replace('XLTC', 'LTC'); if (s.endsWith('ZUSD')) s = s.replace('ZUSD', 'USD');  else if (s.endsWith('ZEUR')) s = s.replace('ZEUR', 'EUR'); if (s.includes('XXBT')) s = s.replace('XXBT', 'BTC');} else if (exchangeName === 'Bitfinex') { if (s.startsWith('T')) s = s.substring(1);  } if (s.endsWith("USD") && !s.endsWith("USDT") && !s.endsWith("USDC")) { s = s.substring(0, s.length - 3) + "USDT";  } if (s.endsWith("USDTUSDT")) s = s.substring(0, s.length - 4); if (s.endsWith("EURUSDT") && s.length > 7) s = s.replace("EURUSDT", "EUR");  return s; }
+        async function fetchExchangeData(exchangeName, config) { logToConsole(`Fetching from ${exchangeName}...`, 'info'); let rawData; try { if (config.type === 'single') { const response = await fetch(config.url); if (!response.ok) throw new Error(`Fetch failed: ${response.statusText} (${response.status}) for ${config.url}`); rawData = await response.json(); }  else if (config.type === 'multi_step_batch') { const listResponse = await fetch(config.list_url); if (!listResponse.ok) throw new Error(`List fetch for ${exchangeName} failed: ${listResponse.statusText}`); const listData = await listResponse.json(); let itemIds = []; if (exchangeName === 'Upbit' && Array.isArray(listData)) { itemIds = listData.filter(m => m.market && (m.market.startsWith("KRW-") || m.market.startsWith("BTC-") || m.market.startsWith("USDT-"))).map(m => m.market).slice(0, 80); } else if (exchangeName === 'Kraken' && listData.result) { itemIds = Object.keys(listData.result).filter(pk => { const quote = listData.result[pk]?.quote; const standardizedQuote = standardizeSymbol(quote, exchangeName); return standardizedQuote === 'USDT' || standardizedQuote === 'USD'; }).slice(0, 20); } else if (exchangeName === 'Bitfinex' && Array.isArray(listData)) { itemIds = listData.filter(d => d.pair && parseFloat(d.last_price) > 0).map(d => `t${d.pair.toUpperCase()}`).slice(0,50); } if (itemIds.length > 0) { const tickerUrl = `${config.ticker_url_base}${itemIds.join(',')}`; const tickerResponse = await fetch(tickerUrl); if (!tickerResponse.ok) throw new Error(`Ticker batch fetch for ${exchangeName} failed: ${tickerResponse.statusText}`); rawData = await tickerResponse.json(); } else { logToConsole(`No relevant items for ${exchangeName} batch request.`, "warn"); return { exchangeName, error: `No items for ${exchangeName} batch` }; } }  else if (config.type === 'multi_step_individual') { const listResponse = await fetch(config.list_url); if (!listResponse.ok) throw new Error(`List fetch for ${exchangeName} failed: ${listResponse.statusText}`); const listData = await listResponse.json(); let itemIds = []; if (exchangeName === 'Coinbase' && Array.isArray(listData)) { itemIds = listData.filter(p => (p.quote_currency === "USD" || p.quote_currency === "USDT" || p.quote_currency === "USDC") && !p.trading_disabled && p.status === 'online').map(p => p.id).slice(0, 10); } else if (exchangeName === 'CryptoCom' && listData.result && Array.isArray(listData.result.instruments) ) { itemIds = listData.result.instruments.filter(i => i.quote_currency === "USDT" || i.quote_currency === "USD").map(i => i.instrument_name).slice(0,10); } if (itemIds.length > 0) { rawData = []; for (const itemId of itemIds) { const tickerUrl = config.ticker_url_template.replace('{id}', itemId).replace('{instrument_name}', itemId).replace('{symbol}',itemId) ; try { const tickerResponse = await fetch(tickerUrl); if (tickerResponse.ok) { const tickerItem = await tickerResponse.json(); if (exchangeName === 'Coinbase' && !tickerItem.product_id) tickerItem.product_id = itemId;  if (exchangeName === 'CryptoCom') { if(tickerItem.result && tickerItem.result.data) rawData.push(tickerItem.result.data); else logToConsole(`Unexpected ticker format for ${itemId} on Crypto.com`, 'warn'); } else { rawData.push(tickerItem); } } else { logToConsole(`Ticker for ${itemId} on ${exchangeName} failed: ${tickerResponse.statusText}`, 'warn'); } await new Promise(resolve => setTimeout(resolve, 300)); } catch(eInner) { logToConsole(`Error fetching individual ticker ${itemId} for ${exchangeName}: ${eInner.message}`, 'error'); } } } else { logToConsole(`No relevant items for ${exchangeName} individual requests.`, "warn"); return { exchangeName, error: `No items for ${exchangeName} individual` }; } } return { exchangeName, data: rawData }; } catch (error) { logToConsole(`Outer fetch/process for ${exchangeName} error: ${error.message}`, "error"); return { exchangeName, error: error.message }; } }
+        async function fetchAndDisplayData() { if (!isScannerRunning || isTradeExecuting) { return; } if (!opportunitiesContainerElement) { return; } if (!opportunitiesContainerElement.querySelector('.loading-card')?.textContent.startsWith('Fetching')) { opportunitiesContainerElement.innerHTML = `<div class="loading-card">Fetching latest prices... (this may take a moment for selected exchanges)</div>`; } const tradeAmt = parseFloat(tradeAmountInput.value) || 10; const filterProfitable = filterProfitableCheckbox.checked; const minProfit = parseFloat(minProfitPercentInput.value) || 0; const maxProfit = parseFloat(maxProfitPercentInput.value) || 50; const autoTrade = autoTradeCheckbox.checked; const activeApiConfig = Object.entries(API_CONFIG).filter(([name]) => selectedExchanges.includes(name)).reduce((obj, [name, config]) => { obj[name] = config; return obj; }, {}); if (Object.keys(activeApiConfig).length === 0) { logToConsole("No exchanges selected. Please select exchanges in Settings.", "warn"); opportunitiesContainerElement.innerHTML = `<div class="loading-card">No exchanges selected. Go to Settings to enable exchanges.</div>`; return; } try { const fetchPromises = Object.entries(activeApiConfig).map(([name, config]) => fetchExchangeData(name, config)); const results = await Promise.allSettled(fetchPromises); let allOps = []; results.forEach(result => { if (result.status === 'fulfilled' && result.value && !result.value.error) { const { exchangeName, data } = result.value; let map = {}; try { if (!data) { logToConsole(`No data received for ${exchangeName} post-process.`, "warn"); return; } if (exchangeName === 'Binance' && Array.isArray(data)) { map = data.reduce((m, t) => { const b = parseFloat(t.bidPrice), a = parseFloat(t.askPrice); const s = standardizeSymbol(t.symbol, exchangeName); if (s && b > 0 && a > 0) m[s] = { bidPrice: b, askPrice: a }; return m; }, {}); } else if (exchangeName === 'Bybit' && data.retCode === 0 && Array.isArray(data.result?.list)) { map = data.result.list.reduce((m, t) => { const b = parseFloat(t.bid1Price), a = parseFloat(t.ask1Price); const s = standardizeSymbol(t.symbol, exchangeName); if (s && b > 0 && a > 0) m[s] = { bidPrice: b, askPrice: a }; return m; }, {}); } else if (exchangeName === 'OKX' && data.code === "0" && Array.isArray(data.data)) { map = data.data.reduce((m, t) => { const b = parseFloat(t.bidPx), a = parseFloat(t.askPx); const s = standardizeSymbol(t.instId, exchangeName); if (s && b > 0 && a > 0) m[s] = { bidPrice: b, askPrice: a }; return m; }, {}); } else if (exchangeName === 'KuCoin' && data.code === "200000" && data.data && Array.isArray(data.data.ticker)) { map = data.data.ticker.reduce((m, t) => { const b = parseFloat(t.buy), a = parseFloat(t.sell); const s = standardizeSymbol(t.symbol, exchangeName); if (s && b > 0 && a > 0) m[s] = { bidPrice: b, askPrice: a }; return m; }, {}); } else if (exchangeName === 'Gate' && Array.isArray(data)) { map = data.reduce((m,t) => { const b = parseFloat(t.highest_bid), a = parseFloat(t.lowest_ask); const s = standardizeSymbol(t.currency_pair, exchangeName); if (s && b > 0 && a > 0) m[s] = { bidPrice: b, askPrice: a }; return m; }, {}); } else if (exchangeName === 'MEXC' && Array.isArray(data)) {  map = data.reduce((m, t) => { const b = parseFloat(t.bidPrice), a = parseFloat(t.askPrice); const s = standardizeSymbol(t.symbol, exchangeName); if (s && b > 0 && a > 0) m[s] = { bidPrice: b, askPrice: a }; return m; }, {}); } else if (exchangeName === 'HTX' && data.status === 'ok' && Array.isArray(data.data)) {  map = data.data.reduce((m, t) => { const b = parseFloat(t.bid), a = parseFloat(t.ask); const s = standardizeSymbol(t.symbol, exchangeName); if (s && b > 0 && a > 0) m[s] = { bidPrice: b, askPrice: a }; return m; }, {}); } else if (exchangeName === 'Bitget' && data.code === "00000" && Array.isArray(data.data)) { map = data.data.reduce((m,t) => { const b = parseFloat(t.buyOne), a = parseFloat(t.sellOne); const s = standardizeSymbol(t.symbolName || t.symbol, exchangeName); if(s && b > 0 && a > 0) m[s] = { bidPrice: b, askPrice: a}; return m;}, {}); } else if (exchangeName === 'CryptoCom' && Array.isArray(data)) { data.forEach(t => { if(t && t.i) { const b = parseFloat(t.b), a = parseFloat(t.k); const s = standardizeSymbol(t.i, exchangeName); if(s && b > 0 && a > 0) map[s] = {bidPrice: b, askPrice: a};}}); } else if (exchangeName === 'Bitfinex' && Array.isArray(data)) {  map = data.reduce((m,t) => { if (Array.isArray(t) && t.length >= 7 && typeof t[0] === 'string' && t[0].startsWith('t')) { const s = standardizeSymbol(t[0].substring(1), exchangeName); const b = parseFloat(t[1]); const a = parseFloat(t[3]); if (s && b>0 && a>0) m[s] = {bidPrice: b, askPrice: a};} return m;}, {}); } else if (exchangeName === 'BingX' && data.code === 0 && data.data && (Array.isArray(data.data.tickers) || Array.isArray(data.data))) { const tickersArray = Array.isArray(data.data.tickers) ? data.data.tickers : (Array.isArray(data.data) ? data.data : []); map = tickersArray.reduce((m,t) => {const b = parseFloat(t.bidPrice), a = parseFloat(t.askPrice); const s = standardizeSymbol(t.symbol, exchangeName); if(s && b>0 && a>0) m[s] = {bidPrice:b, askPrice:a}; return m;}, {}); } else if (exchangeName === 'Kraken' && data.error && Array.isArray(data.error) && data.error.length === 0 && data.result) { for (const krakenPair in data.result) { const ticker = data.result[krakenPair]; const b = parseFloat(ticker.b?.[0]); const a = parseFloat(ticker.a?.[0]); const s = standardizeSymbol(krakenPair, exchangeName); if (s && b > 0 && a > 0) map[s] = { bidPrice: b, askPrice: a }; } } else if (exchangeName === 'Upbit' && Array.isArray(data)) { map = data.reduce((m,t) => { const orderbook_units = t.orderbook_units; if(orderbook_units && orderbook_units.length > 0){ const b = parseFloat(orderbook_units[0].bid_price); const a = parseFloat(orderbook_units[0].ask_price); const s = standardizeSymbol(t.market, exchangeName); if (s && b>0 && a>0) m[s] = {bidPrice: b, askPrice: a};} return m;}, {}); } else if (exchangeName === 'Coinbase' && Array.isArray(data)) { data.forEach(book => { if(book && book.product_id && Array.isArray(book.bids) && book.bids.length > 0 && Array.isArray(book.asks) && book.asks.length > 0) { const b = parseFloat(book.bids[0][0]); const a = parseFloat(book.asks[0][0]); const s = standardizeSymbol(book.product_id, exchangeName); if(s && b>0 && a>0) map[s] = {bidPrice:b, askPrice:a}; }}); } else { logToConsole(`No parsing logic matched for ${exchangeName}. Data:`, "warn"); console.log(data); } if (Object.keys(map).length > 0) { const ops = findTriangularArbitrage(map, "USDT", tradeAmt);  ops.forEach(op => { op.exchange = exchangeName; op.id = `${exchangeName.substring(0,3).toUpperCase()}_${op.path.join('_')}_${Date.now()}`; }); allOps.push(...ops); logToConsole(`${exchangeName}: Found ${ops.length} potential opportunities from ${Object.keys(map).length} tickers.`, 'info'); } } catch (parseError) { logToConsole(`Error parsing ${exchangeName} data post-fetch: ${parseError.message}`, "error"); console.error(`Data for ${exchangeName} that failed parsing:`, data, parseError); } } else if (result.status === 'fulfilled' && result.value && result.value.error) { logToConsole(`Error from ${result.value.exchangeName} during fetch: ${result.value.error}`, "error"); } else if (result.status === 'rejected') { logToConsole(`Promise rejected for an exchange fetch (see network tab or previous logs): ${result.reason}`, "error"); } }); const filtered = allOps.filter(op => op.profitPercent <= maxProfit && op.profitPercent >= minProfit && (!filterProfitable || op.profit > 0)); const sorted = filtered.sort((a, b) => b.profitPercent - a.profitPercent); currentArbitrageOpportunities = sorted; if (isScannerRunning && autoTrade && !isTradeExecuting && sorted.length > 0) { const topOp = sorted[0]; const isConnected = (topOp.exchange === 'Binance' && binanceApiConnected) || (topOp.exchange === 'Bybit' && bybitApiConnected); const isTest = (topOp.exchange === 'Binance' && binanceTestMode) || (topOp.exchange === 'Bybit' && bybitTestMode); if (isConnected && topOp.profitPercent >= AUTO_TRADE_MIN_PROFIT_PERCENT) { logToConsole(`Auto-Trade Triggered (${topOp.exchange} ${isTest ? 'Test':'Live'}): ${topOp.path.join('->')} (${topOp.profitPercent.toFixed(4)}% >= ${AUTO_TRADE_MIN_PROFIT_PERCENT}%). Executing...`, "info"); executeTrade(0, true); } } if (isScannerRunning) renderTable(sorted, minProfit); } catch (err) { console.error("Overall fetch/process error:", err); logToConsole(`Error in fetchAndDisplayData: ${err.message}`, "error"); if (isScannerRunning && opportunitiesContainerElement) opportunitiesContainerElement.innerHTML = `<div class="loading-card error-value">Error: ${err.message}. Retrying...</div>`; } }
+        function findTriangularArbitrage(tickerMap, baseCoin, startAmount) { const opportunities = []; const symbols = Object.keys(tickerMap); function logAnomaly(details) { console.warn('Calc Anomaly:', details); } for (const pair1 of symbols) { let coinA, trade1Rate; if (pair1.endsWith(baseCoin)) { const pA = pair1.substring(0, pair1.length - baseCoin.length); if (!pA || pA === baseCoin) continue; trade1Rate = tickerMap[pair1]?.askPrice; if (!trade1Rate || trade1Rate <= 0) continue; coinA = pA; } else { continue; } const amtA = startAmount / trade1Rate; if (!Number.isFinite(amtA) || amtA <= 0) continue; for (const pair2 of symbols) { let coinB, pair2Used=pair2, price2Desc, rate2, isBuy2, amtB; if (pair2.endsWith(coinA)) { const pB = pair2.substring(0, pair2.length - coinA.length); if (!pB || pB === baseCoin || pB === coinA) continue; const ask2 = tickerMap[pair2]?.askPrice; if (!ask2 || ask2 <= 0) continue; amtB = amtA / ask2; coinB = pB; price2Desc=ask2; rate2=1/ask2; isBuy2=true; } else if (pair2.startsWith(coinA)) { const pB = pair2.substring(coinA.length); if (!pB || pB === baseCoin || pB === coinA) continue; const bid2 = tickerMap[pair2]?.bidPrice; if (!bid2 || bid2 <= 0) continue; amtB = amtA * bid2; coinB = pB; price2Desc=bid2; rate2=bid2; isBuy2=false; } else { continue; } if (!coinB || !Number.isFinite(amtB) || amtB <= 0) continue; let pair3, pair3Used, price3Desc, rate3, isSell3=false, finalAmt; const pair3C1 = coinB+baseCoin; if (tickerMap[pair3C1]) { const bid3 = tickerMap[pair3C1]?.bidPrice; if (bid3 && bid3 > 0) { finalAmt = amtB*bid3; pair3=pair3C1; pair3Used=pair3; price3Desc=bid3; rate3=bid3; isSell3=true; } } const pair3C2 = baseCoin+coinB; if (!isSell3 && tickerMap[pair3C2]) { const ask3 = tickerMap[pair3C2]?.askPrice; if (ask3 && ask3 > 0) { finalAmt = amtB/ask3; pair3=pair3C2; pair3Used=pair3; price3Desc=ask3; rate3=1/ask3; isSell3=true; } } if (!isSell3 || !Number.isFinite(finalAmt) || finalAmt <= 0) continue; const profit = finalAmt-startAmount; const profitPercent = startAmount>0?(profit/startAmount)*100:0; if(!Number.isFinite(profit)||!Number.isFinite(profitPercent)) { logAnomaly({ event:"Result NaN/Inf", path:[pair1,pair2Used,pair3Used],profit,profitPercent }); continue; } if(Math.abs(profitPercent)>EXTREME_PROFIT_THRESHOLD) { logAnomaly({ event:"Extreme Profit %", path:[pair1,pair2Used,pair3Used],profitPercent }); } const s1=`Buy ${coinA} w/ ${baseCoin} @ ${trade1Rate.toPrecision(6)} (${pair1})`; const s2=isBuy2?`Buy ${coinB} w/ ${coinA} @ ${price2Desc.toPrecision(6)} (${pair2Used})`:`Sell ${coinA} for ${coinB} @ ${price2Desc.toPrecision(6)} (${pair2Used})`; const s3=(pair3===pair3C1)?`Sell ${coinB} for ${baseCoin} @ ${price3Desc.toPrecision(6)} (${pair3Used})`:`Buy ${baseCoin} w/ ${coinB} @ ${price3Desc.toPrecision(6)} (${pair3Used})`; opportunities.push({ steps:[s1, s2, s3], path:[pair1,pair2Used,pair3Used], coins:[baseCoin,coinA,coinB], amount:startAmount, profit:profit, profitPercent:profitPercent, base:baseCoin, rates:[trade1Rate,price2Desc,price3Desc], amounts:[startAmount,amtA,amtB,finalAmt], actions:['BUY', isBuy2?'BUY':'SELL', 'SELL'] }); } } return opportunities; }
+        function renderTable(opportunities, minProfitPercent) { if (!opportunitiesContainerElement || !document.body.classList.contains('state-logged-in')) return; opportunitiesContainerElement.innerHTML = "";  if (opportunities.length === 0) { let msg = "No arbitrage opportunities found from selected exchanges."; if (filterProfitableCheckbox?.checked) msg += " Showing only profitable."; if (minProfitPercentInput && parseFloat(minProfitPercentInput.value) > 0) msg += ` Min Profit: ${minProfitPercentInput.value}%.`; if (maxProfitPercentInput && parseFloat(maxProfitPercentInput.value) < EXTREME_PROFIT_THRESHOLD) msg += ` Max Profit: ${maxProfitPercentInput.value}%.`; opportunitiesContainerElement.innerHTML = `<div class="loading-card">${msg}</div>`; return; } const currentMinProfitSetting = minProfitPercentInput ? parseFloat(minProfitPercentInput.value) : 0; opportunities.forEach((op, idx) => { const card = document.createElement('div'); card.className = 'arb-card'; card.dataset.opportunityIndex = idx; if (idx === 0 && op.profitPercent >= currentMinProfitSetting) { card.classList.add("highlight"); } const cardHeader = document.createElement('div'); cardHeader.className = 'card-header'; const pathText = document.createElement('span'); pathText.className = 'card-path'; pathText.textContent = `${op.coins[0]} → ${op.coins[1]} → ${op.coins[2]} → ${op.coins[0]}`; cardHeader.appendChild(pathText); card.appendChild(cardHeader); const logoContainer = document.createElement('div'); logoContainer.className = 'exchange-logo-container'; const logoImg = document.createElement('img'); let useLogo = false; const exchangeLower = op.exchange.toLowerCase(); const logoMap = { 'binance': 'binance.png', 'bybit': 'bybit.png', 'coinbase': 'coinbase.png',  'upbit': 'upbit.png', 'okx': 'okx.png', 'bitget': 'bitget.png', 'mexc': 'mexc.png', 'gate': 'gate.png', 'htx': 'htx.png',  'kucoin': 'kucoin.png', 'cryptocom': 'cryptocom.png', 'bitfinex': 'bitfinex.png',  'bingx': 'bingx.png', 'kraken': 'kraken.png' }; if (logoMap[exchangeLower]) { logoImg.src = logoMap[exchangeLower]; logoImg.alt = `${op.exchange} Logo`; useLogo = true; } if (useLogo) { logoContainer.appendChild(logoImg); } else { const exchangeNameText = document.createElement('p'); exchangeNameText.textContent = op.exchange; exchangeNameText.style.textAlign = 'center'; exchangeNameText.style.fontWeight = 'bold'; exchangeNameText.style.marginBottom = '1rem'; logoContainer.appendChild(exchangeNameText); } card.appendChild(logoContainer); const stepsGrid = document.createElement('div'); stepsGrid.className = 'steps-grid'; const stepData = [ { action: op.actions[0], description: ` ${op.coins[1]} w/ ${op.coins[0]} @ ${op.rates[0].toPrecision(6)} (${op.path[0]})`}, { action: op.actions[1], description: op.actions[1] === 'BUY' ? ` ${op.coins[2]} w/ ${op.coins[1]} @ ${op.rates[1].toPrecision(6)} (${op.path[1]})` : ` ${op.coins[1]} for ${op.coins[2]} @ ${op.rates[1].toPrecision(6)} (${op.path[1]})`}, { action: op.actions[2], description: ` ${op.coins[2]} for ${op.coins[0]} @ ${op.rates[2].toPrecision(6)} (${op.path[2]})`} ]; stepData.forEach((stepInfo, stepIdx) => { const stepCard = document.createElement('div'); stepCard.className = 'step-card'; const stepTitle = document.createElement('div'); stepTitle.textContent = `Step ${stepIdx + 1}`; stepCard.appendChild(stepTitle); const actionSpan = document.createElement('span'); actionSpan.textContent = stepInfo.action; actionSpan.className = stepInfo.action === 'BUY' ? 'step-action-buy' : 'step-action-sell'; const stepDetail = document.createElement('div'); stepDetail.className = 'step-card-pair-details'; stepDetail.appendChild(actionSpan); stepDetail.appendChild(document.createTextNode(stepInfo.description)); stepCard.appendChild(stepDetail); stepsGrid.appendChild(stepCard); }); card.appendChild(stepsGrid); const profitSection = document.createElement('div'); profitSection.className = 'profit-section'; const profitDetails = document.createElement('div'); profitDetails.className = 'profit-details'; const startAmountText = document.createElement('div'); startAmountText.className = 'start-amount'; startAmountText.textContent = `Start: ${op.amount.toFixed(op.amount < 1 ? 4 : 2)} ${op.base}`; profitDetails.appendChild(startAmountText); const profitValueText = document.createElement('div'); profitValueText.className = `profit-value ${op.profit >= 0 ? 'profit-positive' : 'profit-negative'}`; profitValueText.textContent = `Profit: ${op.profit.toFixed(op.profit < 1 && op.profit > -1 ? 6 : 4)} ${op.base} (${op.profitPercent.toFixed(4)}%)`; if (Math.abs(op.profitPercent) > EXTREME_PROFIT_THRESHOLD / 5) { profitValueText.classList.add('error-value'); } profitDetails.appendChild(profitValueText); profitSection.appendChild(profitDetails); const tradeBtn = document.createElement("button"); tradeBtn.textContent = "Trade"; tradeBtn.className = "trade-btn"; const isTradableExchange = (op.exchange === 'Binance' || op.exchange === 'Bybit'); const isApiForOpConnected = isTradableExchange && ((op.exchange === 'Binance' && binanceApiConnected) || (op.exchange === 'Bybit' && bybitApiConnected)); if (op.profitPercent >= currentMinProfitSetting) { tradeBtn.disabled = !isApiForOpConnected || isTradeExecuting; if(isTradeExecuting) { tradeBtn.title = "Trade in progress..."; } else if (!isApiForOpConnected && isTradableExchange) { tradeBtn.title = `Connect ${op.exchange} API to trade`; } else if (isApiForOpConnected) { tradeBtn.title = `Execute ${op.path.join('->')} on ${op.exchange}`; tradeBtn.onclick = (i => () => executeTrade(i, false))(idx); } else { tradeBtn.title = `Trading not (yet) supported for ${op.exchange}`; tradeBtn.disabled = true; } } else { tradeBtn.disabled = true; tradeBtn.title = `Profit (${op.profitPercent.toFixed(4)}%) is below minimum threshold (${currentMinProfitSetting}%)`; if (!isApiForOpConnected && op.profitPercent >= 0 && isTradableExchange) tradeBtn.title += ` & Connect ${op.exchange} API`; } profitSection.appendChild(tradeBtn); card.appendChild(profitSection); opportunitiesContainerElement.appendChild(card); }); }
+        function toggleApiSettings() { if(apiForm && document.body.classList.contains('state-logged-in')) apiForm.classList.toggle("hidden"); if(toggleApiBtn && document.body.classList.contains('state-logged-in')) toggleApiBtn.textContent = apiForm?.classList.contains("hidden") ? "Show API Connection Settings" : "Hide API Connection Settings";  }
+        function connectBinanceApi() { if (!binanceApiKeyInput || !binanceApiSecretInput || !binanceTestModeCheckbox || !document.body.classList.contains('state-logged-in')) return; const key = binanceApiKeyInput.value.trim(), secret = binanceApiSecretInput.value.trim(), test = binanceTestModeCheckbox.checked; if (!key || !secret) { alert("Binance Key & Secret required."); return; } binanceApiKey = key; binanceApiSecret = secret; binanceTestMode = test; binanceApiConnected = true; updateApiStatusUI(); logToConsole(`Binance Connected ${test ? "(Test)" : "(Live)"}.`, "success"); checkAutoTradeStatus(); enableTradingButtons(); saveUserSetting('binanceApiKey', key); saveUserSetting('binanceApiSecret', secret); saveUserSetting('binanceTestMode', test); if (currentUser) logToConsole("Binance credentials potentially saved.", "info"); binanceApiKeyInput.value = ''; binanceApiSecretInput.value = ''; }
+        function disconnectBinanceApi() { if (!document.body.classList.contains('state-logged-in')) return; binanceApiKey = ''; binanceApiSecret = ''; binanceApiConnected = false; updateApiStatusUI(); logToConsole("Binance Disconnected.", "info"); checkAutoTradeStatus(); enableTradingButtons(); saveUserSetting('binanceApiKey', ''); saveUserSetting('binanceApiSecret', ''); if (currentUser) logToConsole("Cleared saved Binance credentials.", "info"); localStorage.removeItem("binanceApiKeyHint"); }
+        function connectBybitApi() { if (!bybitApiKeyInput || !bybitApiSecretInput || !bybitTestModeCheckbox || !document.body.classList.contains('state-logged-in')) return; const key = bybitApiKeyInput.value.trim(), secret = bybitApiSecretInput.value.trim(), test = bybitTestModeCheckbox.checked; if (!key || !secret) { alert("Bybit Key & Secret required."); return; } bybitApiKey = key; bybitApiSecret = secret; bybitTestMode = test; bybitApiConnected = true; updateApiStatusUI(); logToConsole(`Bybit Connected ${test ? "(Test)" : "(Live)"}.`, "success"); checkAutoTradeStatus(); enableTradingButtons(); saveUserSetting('bybitApiKey', key); saveUserSetting('bybitApiSecret', secret); saveUserSetting('bybitTestMode', test); if (currentUser) logToConsole("Bybit credentials potentially saved.", "info"); bybitApiKeyInput.value = ''; bybitApiSecretInput.value = ''; }
+        function disconnectBybitApi() { if (!document.body.classList.contains('state-logged-in')) return; bybitApiKey = ''; bybitApiSecret = ''; bybitApiConnected = false; updateApiStatusUI(); logToConsole("Bybit Disconnected.", "info"); checkAutoTradeStatus(); enableTradingButtons(); saveUserSetting('bybitApiKey', ''); saveUserSetting('bybitApiSecret', ''); if (currentUser) logToConsole("Cleared saved Bybit credentials.", "info"); localStorage.removeItem("bybitApiKeyHint"); }
+        function updateApiStatusUI() { if (!document.body.classList.contains('state-logged-in')) return; const binHint = !currentUser && loadSetting("binanceApiKeyHint") ? ` (Hint: ${loadSetting("binanceApiKeyHint")})` : ''; const bybHint = !currentUser && loadSetting("bybitApiKeyHint") ? ` (Hint: ${loadSetting("bybitApiKeyHint")})` : ''; if(binanceApiStatusIndicator && binanceApiStatusText && connectBinanceApiBtn && disconnectBinanceApiBtn && binanceApiKeyInput && binanceApiSecretInput) { if (binanceApiConnected) { binanceApiStatusIndicator.className = "status-indicator status-connected"; binanceApiStatusText.textContent = `Binance Connected ${binanceTestMode ? "(Test)" : "(Live)"}`; connectBinanceApiBtn.classList.add("hidden"); disconnectBinanceApiBtn.classList.remove("hidden"); binanceApiKeyInput.placeholder = "Connected"; binanceApiSecretInput.placeholder = "Connected"; } else { binanceApiStatusIndicator.className = "status-indicator status-disconnected"; binanceApiStatusText.textContent = "Binance API Disconnected"; connectBinanceApiBtn.classList.remove("hidden"); disconnectBinanceApiBtn.classList.add("hidden"); binanceApiKeyInput.placeholder = `Enter Binance API Key${binHint}`; binanceApiSecretInput.placeholder = 'Enter Binance API Secret'; }} if(bybitApiStatusIndicator && bybitApiStatusText && connectBybitApiBtn && disconnectBybitApiBtn && bybitApiKeyInput && bybitApiSecretInput) { if (bybitApiConnected) { bybitApiStatusIndicator.className = "status-indicator status-connected"; bybitApiStatusText.textContent = `Bybit Connected ${bybitTestMode ? "(Test)" : "(Live)"}`; connectBybitApiBtn.classList.add("hidden"); disconnectBybitApiBtn.classList.remove("hidden"); bybitApiKeyInput.placeholder = "Connected"; bybitApiSecretInput.placeholder = "Connected"; } else { bybitApiStatusIndicator.className = "status-indicator status-disconnected"; bybitApiStatusText.textContent = "Bybit API Disconnected"; connectBybitApiBtn.classList.remove("hidden"); disconnectBybitApiBtn.classList.add("hidden"); bybitApiKeyInput.placeholder = `Enter Bybit API Key${bybHint}`; bybitApiSecretInput.placeholder = 'Enter Bybit API Secret'; }} checkAutoTradeStatus(); }
+        function checkAutoTradeStatus() { if (!autoTradeCheckbox || !document.body.classList.contains('state-logged-in')) return; const anyConnected = binanceApiConnected || bybitApiConnected; autoTradeCheckbox.disabled = !anyConnected; autoTradeCheckbox.title = anyConnected ? "Enable automatic trading of top opportunity" : "Connect API to enable Auto-Trade"; if (!anyConnected) autoTradeCheckbox.checked = false; }
+        function enableTradingButtons() { if (!opportunitiesContainerElement || !document.body.classList.contains('state-logged-in')) return; opportunitiesContainerElement.querySelectorAll(".arb-card").forEach(card => { const indexStr = card.dataset.opportunityIndex; if (indexStr === undefined || indexStr === null) return; const index = parseInt(indexStr, 10); if (isNaN(index) || index >= currentArbitrageOpportunities.length || index < 0) return; const op = currentArbitrageOpportunities[index]; if (!op) return; const tradeBtn = card.querySelector(".trade-btn"); if (tradeBtn) { const isTradableExchange = (op.exchange === 'Binance' || op.exchange === 'Bybit'); const isApiForOpConnected = isTradableExchange && ((op.exchange === 'Binance' && binanceApiConnected) || (op.exchange === 'Bybit' && bybitApiConnected)); const currentMinProfitVal = minProfitPercentInput ? parseFloat(minProfitPercentInput.value) : 0; if (op.profitPercent >= currentMinProfitVal) { tradeBtn.disabled = !isApiForOpConnected || isTradeExecuting; if(isTradeExecuting) { tradeBtn.title = "Trade in progress..."; } else if (!isApiForOpConnected && isTradableExchange) { tradeBtn.title = `Connect ${op.exchange} API to trade`; } else if (isApiForOpConnected) { tradeBtn.title = `Execute ${op.path.join('->')} on ${op.exchange}`; } else { tradeBtn.title = `Trading not supported for ${op.exchange} yet`; tradeBtn.disabled = true; } } else { tradeBtn.disabled = true; tradeBtn.title = `Profit (${op.profitPercent.toFixed(4)}%) is below minimum threshold (${currentMinProfitVal}%)`; if (!isApiForOpConnected && op.profitPercent >= 0 && isTradableExchange) tradeBtn.title += ` & Connect ${op.exchange} API`; } } }); }
+        function disableTradingButtons() { if (!opportunitiesContainerElement || !document.body.classList.contains('state-logged-in')) return; opportunitiesContainerElement.querySelectorAll(".trade-btn").forEach(btn => { btn.disabled = true; btn.title = "Trade in progress..."; }); if (autoTradeCheckbox) { autoTradeCheckbox.disabled = true; autoTradeCheckbox.title = "Trade in progress..."; } }
+        function executeTrade(index, isAuto = false) { if (!document.body.classList.contains('state-logged-in') || !confirmModalBody) return; if (isTradeExecuting) { logToConsole("Trade already in progress.", "warn"); return; } if (index < 0 || index >= currentArbitrageOpportunities.length) { logToConsole(`Trade failed: Stale index (${index}). Refreshing...`, "error"); if(isScannerRunning) fetchAndDisplayData(); return; } const op = currentArbitrageOpportunities[index]; if (!op) { logToConsole("Trade failed: Opportunity data not found.", "error"); return; } const isConnected = (op.exchange === 'Binance' && binanceApiConnected) || (op.exchange === 'Bybit' && bybitApiConnected); if (!isConnected) { const msg = `API for ${op.exchange} not connected. Cannot execute trade.`; if (!isAuto) alert(msg); logToConsole(`Trade aborted: ${msg}`, "warn"); return; } pendingTradeOp = op; isTradeExecuting = true; disableTradingButtons(); const profitClass = op.profit >= 0 ? 'profit' : 'loss'; const isTest = (op.exchange === 'Binance' && binanceTestMode) || (op.exchange === 'Bybit' && bybitTestMode); const warn = isTest ? `<p style="color: orange; font-weight: bold;">${op.exchange} TEST MODE ACTIVE.</p>` : `<p style="color: red; font-weight: bold;">🚨 WARNING: ${op.exchange} LIVE MODE ACTIVE! REAL TRADES! 🚨</p>`; confirmModalBody.innerHTML = `<p><strong>Exchange:</strong> ${op.exchange}</p><p><strong>Path:</strong></p><ol><li>${op.steps[0]}</li><li>${op.steps[1]}</li><li>${op.steps[2]}</li></ol><p><strong>Amount:</strong> ${op.amount.toFixed(4)} ${op.base}</p><p><strong>Expected Profit:</strong> <span class="${profitClass}">${op.profit.toFixed(6)} ${op.base} (${op.profitPercent.toFixed(4)}%)</span></p>${warn}<p><em>Note: Slippage may occur.</em></p>`; if (isAuto) { logToConsole(`Auto-confirming ${op.exchange} trade ID: ${op.id}.`, "info"); setTimeout(confirmTrade, 200); } else { confirmModal.style.display = "flex"; } }
+        async function confirmTrade() { if (!document.body.classList.contains('state-logged-in')) return; if (!pendingTradeOp) { logToConsole("Confirm failed: No pending trade.", "error"); if(isTradeExecuting) resetTradeState(); closeModalWindow(confirmModal); return; } const op = pendingTradeOp; pendingTradeOp = null; const isConnected = (op.exchange === 'Binance' && binanceApiConnected) || (op.exchange === 'Bybit' && bybitApiConnected); if (!isConnected) { logToConsole(`Exec failed: ${op.exchange} API disconnected. ID: ${op.id}`, "error"); resetTradeState(); closeModalWindow(confirmModal); return; } closeModalWindow(confirmModal); logToConsole(`Confirmed ${op.exchange} Trade ID: ${op.id}. Path: ${op.path.join(" → ")}. Executing...`, "info"); const isTest = (op.exchange === 'Binance' && binanceTestMode) || (op.exchange === 'Bybit' && bybitTestMode); const modePrefix = isTest ? `[${op.exchange} Test]` : `[${op.exchange} Live]`; if (isTest) { logToConsole(`${modePrefix} Simulating Step 1: ${op.steps[0]}`, "info"); await new Promise(r=>setTimeout(r, 400+Math.random()*200)); logToConsole(`${modePrefix} Simulating Step 2: ${op.steps[1]}`, "info"); await new Promise(r=>setTimeout(r, 400+Math.random()*200)); logToConsole(`${modePrefix} Simulating Step 3: ${op.steps[2]}`, "info"); await new Promise(r=>setTimeout(r, 400+Math.random()*200)); logToConsole(`${modePrefix} Simulation Complete ID: ${op.id}. Exp. profit: ${op.profit.toFixed(6)} ${op.base}`, "success"); resetTradeState(); return; } try { logToConsole(`${modePrefix} --- STARTING LIVE EXECUTION --- ID: ${op.id}`, "warn"); if (op.exchange === 'Binance') { logToConsole(`${modePrefix} Executing Binance Step 1: ${op.steps[0]}`, "info"); await executeBinanceOrder_Placeholder(op.path[0], op.actions[0]); logToConsole(`${modePrefix} Binance Step 1 OK.`, "success"); logToConsole(`${modePrefix} Executing Binance Step 2: ${op.steps[1]}`, "info"); await executeBinanceOrder_Placeholder(op.path[1], op.actions[1]); logToConsole(`${modePrefix} Binance Step 2 OK.`, "success"); logToConsole(`${modePrefix} Executing Binance Step 3: ${op.steps[2]}`, "info"); await executeBinanceOrder_Placeholder(op.path[2], op.actions[2]); logToConsole(`${modePrefix} Binance Step 3 OK.`, "success"); } else if (op.exchange === 'Bybit') { logToConsole(`${modePrefix} Executing Bybit Step 1: ${op.steps[0]}`, "info"); await executeBybitOrder_Placeholder(op.path[0], op.actions[0]); logToConsole(`${modePrefix} Bybit Step 1 OK.`, "success"); logToConsole(`${modePrefix} Executing Bybit Step 2: ${op.steps[1]}`, "info"); await executeBybitOrder_Placeholder(op.path[1], op.actions[1]); logToConsole(`${modePrefix} Bybit Step 2 OK.`, "success"); logToConsole(`${modePrefix} Executing Bybit Step 3: ${op.steps[2]}`, "info"); await executeBybitOrder_Placeholder(op.path[2], op.actions[2]); logToConsole(`${modePrefix} Bybit Step 3 OK.`, "success"); } logToConsole(`${modePrefix} --- LIVE TRADE COMPLETED --- ID: ${op.id}. Verify on ${op.exchange}.`, "success"); } catch (error) { console.error(`${modePrefix} Trade Error:`, error); logToConsole(`${modePrefix} Trade Failed ID: ${op.id}. Reason: ${error.message}. CHECK EXCHANGE!`, "error"); } finally { resetTradeState(); } }
+        async function executeBinanceOrder_Placeholder(symbol, side, qty=null) { const m=binanceTestMode?"[Test]":"[Live]"; logToConsole(`[Binance ${m}] Placeholder: ${side} ${qty||'Qty'} ${symbol}`, 'info'); if(!binanceApiConnected) throw new Error("Binance disconnected"); await new Promise(r=>setTimeout(r, 500+Math.random()*300)); if(Math.random()<0.03&&!binanceTestMode) throw new Error(`Simulated Binance ${m} Error`); logToConsole(`[Binance ${m}] Placeholder OK: ${side} ${symbol}`, 'success'); return {status:'FILLED', orderId:Date.now()};}
+        async function executeBybitOrder_Placeholder(symbol, side, qty=null) { const m=bybitTestMode?"[Test]":"[Live]"; const s=side.toUpperCase()==='BUY'?'Buy':'Sell'; logToConsole(`[Bybit ${m}] Placeholder: ${s} ${qty||'Qty'} ${symbol}`, 'info'); if(!bybitApiConnected) throw new Error("Bybit disconnected"); await new Promise(r=>setTimeout(r, 500+Math.random()*300)); if(Math.random()<0.03&&!bybitTestMode) throw new Error(`Simulated Bybit ${m} Error`); logToConsole(`[Bybit ${m}] Placeholder OK: ${s} ${symbol}`, 'success'); return {retCode:0, result:{orderId:`sim_${Date.now()}`}};}
+        function resetTradeState() { pendingTradeOp = null; isTradeExecuting = false; console.log("Trade state reset."); if (document.body.classList.contains('state-logged-in')) { enableTradingButtons(); checkAutoTradeStatus(); } }
+        function logToConsole(message, type = "info") { const logContainer = document.getElementById("logEntries"); if (!logContainer) { return; } try { const time = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}); const entry = document.createElement("div"); entry.className = "log-entry"; const timeSpan = document.createElement("span"); timeSpan.className = "log-time"; timeSpan.textContent = `[${time}]`; const msgSpan = document.createElement("span"); const types = ["info","success","error","warn"]; msgSpan.className = `log-${types.includes(type)?type:'info'}`; msgSpan.textContent = ` ${message}`; entry.appendChild(timeSpan); entry.appendChild(msgSpan); logContainer.insertBefore(entry, logContainer.firstChild); while (logContainer.children.length > 200) logContainer.removeChild(logContainer.lastChild); } catch (e) { console.error("Log error:", e); } }
+        
         document.addEventListener("DOMContentLoaded", () => {
-            updateViewStateOnLogout(); // Set initial state (login view visible)
-            // Cache only the skip button initially, add its listener
+            updateViewStateOnLogout(); 
             skipLoginBtn = document.getElementById('skipLoginBtn');
-            if (skipLoginBtn) { skipLoginBtn.addEventListener('click', handleSkipLogin); } else { console.error("Skip login button not found on initial load."); }
-            // Update initial log message
-            const initialLog = document.getElementById("logEntries"); if (initialLog) { logToConsole("Application Initialized. Please log in or skip to continue.", "info"); } else { console.log("Initial log container not found yet."); }
+            if (skipLoginBtn) {
+                skipLoginBtn.addEventListener('click', handleSkipLogin);
+            } else {
+                console.error("FATAL: Skip login button not found on initial load. Application cannot proceed.");
+                document.body.innerHTML = "<p style='color:red; font-size:1.2em; text-align:center; margin-top: 50px;'>Application Error: Critical component 'skipLoginBtn' missing. Please check the HTML structure and ensure the script is at the end of the body.</p>";
+                return; 
+            }
+            logToConsole("Application Initialized. Please log in or skip to continue.", "info");
         });
     </script>
-
 </body>
 </html>
