@@ -1,0 +1,12 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+psycopg2-binary
+cryptography
+requests
+gunicorn
+dj_database_url
+celery
+redis
+django-redis
+python-json-logger
